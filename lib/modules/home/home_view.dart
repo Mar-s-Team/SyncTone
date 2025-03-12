@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:synctone/modules/home/home_controller.dart';
 import 'package:synctone/routes/app_pages.dart';
 
@@ -35,20 +34,16 @@ class HomeView extends GetView<HomeController> {
           )
         ],
       ),
-      bottomNavigationBar: AnimatedNotchBottomBar(
-        notchBottomBarController: controller.bottomBarController,
-        bottomBarItems: const [
-          BottomBarItem(
-            inActiveItem: Icon(Icons.home_filled, color: Colors.blueGrey,),
-            activeItem: Icon( Icons.home_filled,color: Colors.blueAccent,),
-            itemLabel: 'Page 1',
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const<BottomNavigationBarItem> [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled),
+              label: 'Calls'
+          ),
         ],
-        onTap: (int value) {
-          Get.toNamed(Routes.HOME);
-        },
-        kIconSize: 200.0,
-        kBottomRadius: 200.0,
+        onTap: (index) {
+
+        }
       )
     );
   }
