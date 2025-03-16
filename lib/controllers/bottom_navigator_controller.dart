@@ -1,17 +1,21 @@
 import 'package:get/get.dart';
-import 'package:synctone/routes/app_pages.dart';
+import 'package:synctone/modules/friends/friends_screen.dart';
+import 'package:synctone/modules/home/home_screen.dart';
+import 'package:synctone/modules/location/location_screen.dart';
+import 'package:synctone/modules/player/player_screen.dart';
+import 'package:synctone/modules/playlists/playlists_screen.dart';
+import 'package:synctone/modules/stats/stats_screen.dart';
 
 class BottomNavigatorController extends GetxController {
-  final pages = AppPages.routes;
+  var screens = const [
+    HomeScreen(),
+    LocationScreen(),
+    PlayerScreen(),
+    StatsScreen(),
+    FriendsScreen(),
+    PlaylistsScreen(),
+  ];
   var index = 0.obs;
 
   void setIndex(i) => index.value = i;
-
-  int findPageIndex (var page){
-    return pages.indexOf(page);
-  }
-
-  String getPageTitle(int index){
-    return pages[index].title.toString();
-  }
 }

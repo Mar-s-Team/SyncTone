@@ -10,11 +10,12 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   //static const REGISTER = _Paths.REGISTER;
   static const HOME = _Paths.HOME;
-  //static const LOCATION = _Paths.LOCATION;
-  //static const PLAYER = _Paths.PLAYER;
-  //static const STATS = _Paths.STATS;
+  static const LOCATION = _Paths.LOCATION;
+  static const PLAYER = _Paths.PLAYER;
+  static const STATS = _Paths.STATS;
   static const FRIENDS = _Paths.FRIENDS;
-  //static const PLAYLISTS = _Paths.PLAYLISTS;
+  static const PLAYLISTS = _Paths.PLAYLISTS;
+  static const SETTINGS = _Paths.SETTINGS;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const STATS = '/stats';
   static const FRIENDS = '/friends';
   static const PLAYLISTS = '/playlists';
+  static const SETTINGS = '/settings';
 }

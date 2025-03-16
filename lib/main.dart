@@ -22,19 +22,24 @@ void main() async{
     GetMaterialApp(
       title: 'SyncTone',
       initialRoute: supaProvider.client.auth.currentUser == null
-          ? Routes.MAIN
+          ? Routes.HOME //TODO auth login
           : Routes.HOME,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.red,
-        ),
+        // colorScheme: ColorScheme.fromSeed(
+        //   seedColor: Color.fromRGBO(r, g, b, opacity),
+        //
+        // ),
+        scaffoldBackgroundColor: const Color(0xFF2B2B2B),
         fontFamily: 'Cambria',
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromRGBO(186, 0, 0, 100),
+          backgroundColor: Color(0xFF2B2B2B),
           centerTitle: true,
-          foregroundColor: Colors.white,
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, ),
+        ),
+        iconTheme: const IconThemeData(
+          color: Color(0xFF8400C4)
         ),
       ),
     )

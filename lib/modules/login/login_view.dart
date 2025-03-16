@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 
 import 'login_controller.dart';
 
-class LoginView extends GetView<LoginController> {
+class LoginScreen extends GetView<LoginController> {
   //final authC = Get.find<AuthController>();
 
-  LoginView({super.key});
+  LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
