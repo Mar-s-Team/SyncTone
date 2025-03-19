@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
@@ -22,7 +24,7 @@ void main() async{
     GetMaterialApp(
       title: 'SyncTone',
       initialRoute: supaProvider.client.auth.currentUser == null
-          ? Routes.HOME //TODO auth login
+          ? Routes.MAIN //TODO auth login
           : Routes.HOME,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
@@ -42,6 +44,8 @@ void main() async{
           color: Color(0xFF8400C4)
         ),
       ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     )
   );
 }
