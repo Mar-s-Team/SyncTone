@@ -1,0 +1,27 @@
+{
+    "appTitle": "SyncTone",
+
+    "loginTitle": "Welcome",
+    "loginEmailLabel": "Email",
+    "loginPasswordLabel": "Password",
+    "loginSignInButton": "Sign in",
+    "loginOtherLabel" : "Or sign in with",
+    "loginButtonLoading": "Loading",
+    "loginGoogleButton": "Continue with Google",
+    "loginNoAccount": "Don't have an account?",
+    "loginSignUp": "Sign Up here",
+
+    "homeTitle": "SyncTone",
+
+    "locationsTitle": "My SyncLocations",
+
+    "playerTitle": "Currently playing",
+
+    "statsTitle": "My SyncStats",
+
+    "friendsTitle": "My SyncFriends",
+
+    "playlistsTitle": "My SyncPlaylists",
+
+    "settingsTitle": "Settings"
+}
