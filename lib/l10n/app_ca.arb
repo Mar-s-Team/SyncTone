@@ -1,0 +1,26 @@
+{
+    "appTitle": "SyncTone",
+
+    "loginTitle": "Benvingut",
+    "loginEmailLabel": "Email",
+    "loginPasswordLabel": "Contrasenya",
+    "loginSignInButton": "Iniciar sessió",
+    "loginOtherLabel" : "Inicia sessió amb",
+    "loginGoogleButton": "Continúa amb Google",
+    "loginNoAccount": "No tens compte?",
+    "loginSignUp": "Registra't aquí",
+
+    "homeTitle": "SyncTone",
+
+    "locationsTitle": "Les meves SyncLocations",
+
+    "playerTitle": "Escoltant ara",
+
+    "statsTitle": "Les meves SyncStats",
+
+    "friendsTitle": "Els meus SyncFriends",
+
+    "playlistsTitle": "Les meves SyncPlaylists",
+
+    "settingsTitle": "Configuració"
+}
