@@ -15,7 +15,7 @@ class LoginController extends GetxController {
       isLoading.value = true;
       try {
         await client.auth
-            .signInWithPassword(email: emailC.text, password: passwordC.text);
+            .signInWithPassword(email: emailC.text, password: passwordC.text,);
         isLoading.value = false;
         Get.defaultDialog(
             barrierDismissible: false,

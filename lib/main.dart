@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 import 'package:synctone/routes/app_pages.dart';
+import 'package:synctone/languages/lang.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ void main() async{
     GetMaterialApp(
       title: 'SyncTone',
       initialRoute: supaProvider.client.auth.currentUser == null
-          ? Routes.HOME //TODO auth login
+          ? Routes.LOGIN
           : Routes.HOME,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,

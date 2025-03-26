@@ -6,7 +6,7 @@ import 'package:synctone/modules/home/home_screen.dart';
 import 'package:synctone/modules/location/location_binding.dart';
 import 'package:synctone/modules/location/location_screen.dart';
 import 'package:synctone/modules/login/login_binding.dart';
-import 'package:synctone/modules/login/login_view.dart';
+import 'package:synctone/modules/login/login_screen.dart';
 import 'package:synctone/modules/main/main_binding.dart';
 import 'package:synctone/modules/main/main_view.dart';
 import 'package:synctone/modules/player/player_binding.dart';
@@ -45,7 +45,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => LoginScreen(),
+      page: () => const LoginScreen(),
       binding: LoginBinding(),
     ),
     GetPage(

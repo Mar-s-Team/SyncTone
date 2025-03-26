@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
-import 'package:synctone/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   NotchBottomBarController bottomBarController = NotchBottomBarController();

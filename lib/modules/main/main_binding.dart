@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import 'package:synctone/modules/home/home_controller.dart';
 import 'package:synctone/modules/main/main_controller.dart';
 
 class MainBinding extends Bindings {

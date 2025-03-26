@@ -8,7 +8,7 @@ abstract class Routes {
 
   static const MAIN = _Paths.MAIN;
   static const LOGIN = _Paths.LOGIN;
-  //static const REGISTER = _Paths.REGISTER;
+  static const REGISTER = _Paths.REGISTER;
   static const HOME = _Paths.HOME;
   static const LOCATION = _Paths.LOCATION;
   static const PLAYER = _Paths.PLAYER;
