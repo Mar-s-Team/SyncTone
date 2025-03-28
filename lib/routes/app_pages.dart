@@ -55,7 +55,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SETTINGS,
-      page: () => const SettingsScreen(),
+      page: () =>  SettingsScreen(),
       binding: SettingsBinding(),
     ),
     GetPage(

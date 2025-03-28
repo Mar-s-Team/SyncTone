@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
+import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'package:synctone/languages/lang.dart';
@@ -19,7 +20,8 @@ void main() async{
     url: supaUri,
     anonKey: supaAnon,
   );
-  final authC = Get.put(BottomNavigatorController(), permanent: true);
+  final navC = Get.put(BottomNavigatorController());
+  final authC = Get.put(AuthController(), permanent: true);
 
   runApp(
     GetMaterialApp(
