@@ -11,6 +11,11 @@
     "loginNoAccount": "Don't have an account?",
     "loginSignUp": "Sign Up here",
 
+    "registerEmailLabel": "Email",
+    "registerPasswordLabel": "Password",
+    "registerTitle": "Sign Up",
+    "registerSignUpButton": "Create account",
+
     "homeTitle": "SyncTone",
 
     "locationsTitle": "My SyncLocations",

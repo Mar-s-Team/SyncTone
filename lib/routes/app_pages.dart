@@ -17,9 +17,9 @@ import 'package:synctone/modules/settings/settings_binding.dart';
 import 'package:synctone/modules/settings/settings_screen.dart';
 import 'package:synctone/modules/stats/stats_binding.dart';
 import 'package:synctone/modules/stats/stats_screen.dart';
-
 import '../modules/friends/friends_screen.dart';
-
+import '../modules/register/register_binding.dart';
+import '../modules/register/register_screen.dart';
 part 'app_routes.dart';
 
 class AppPages {
@@ -47,6 +47,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginScreen(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => const RegisterScreen(),
+      binding: RegisterBinding(),
     ),
     GetPage(
       name: _Paths.SETTINGS,

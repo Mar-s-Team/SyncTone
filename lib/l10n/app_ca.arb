@@ -5,10 +5,16 @@
     "loginEmailLabel": "Email",
     "loginPasswordLabel": "Contrasenya",
     "loginSignInButton": "Iniciar sessió",
-    "loginOtherLabel" : "Inicia sessió amb",
-    "loginGoogleButton": "Continúa amb Google",
+    "loginOtherLabel" : "O inicia sessió amb",
+    "loginButtonLoading": "Carregant",
+    "loginGoogleButton": "Continua amb Google",
     "loginNoAccount": "No tens compte?",
     "loginSignUp": "Registra't aquí",
+
+    "registerEmailLabel": "Email",
+    "registerPasswordLabel": "Contrasenya",
+    "registerTitle": "Registra't",
+    "registerSignUpButton": "Crear compte",
 
     "homeTitle": "SyncTone",
 

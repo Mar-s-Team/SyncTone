@@ -28,5 +28,4 @@ flutter:
   assets:
     - assets/logo_google.jpg
   uses-material-design: true
-  uses-material-design: true
   generate: true

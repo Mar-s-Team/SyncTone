@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'login_controller.dart';
-import 'package:synctone/languages/lang.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends GetView<LoginController> {
   const LoginScreen({super.key});
@@ -19,7 +19,7 @@ class LoginScreen extends GetView<LoginController> {
             children: [
               // Contenedor para los campos de email y contraseña
               Container(
-                width: 450,
+                width: 375,
                 height: 450,
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
@@ -36,8 +36,7 @@ class LoginScreen extends GetView<LoginController> {
                 ),
                 child: Column(
                   children: [
-                  Text(
-                  'login.welcome'.tr,
+                  Text(AppLocalizations.of(context)!.loginTitle,
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -52,7 +51,7 @@ class LoginScreen extends GetView<LoginController> {
                         controller: controller.emailC,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          labelText: 'login.email_label'.tr,
+                          labelText: AppLocalizations.of(context)!.loginEmailLabel,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -73,7 +72,7 @@ class LoginScreen extends GetView<LoginController> {
                               icon: controller.isHidden.isTrue
                                   ? const Icon(Icons.remove_red_eye)
                                   : const Icon(Icons.remove_red_eye_outlined)),
-                          labelText: 'login.password_label'.tr,
+                          labelText: AppLocalizations.of(context)!.loginPasswordLabel,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -94,9 +93,10 @@ class LoginScreen extends GetView<LoginController> {
                         backgroundColor: Colors.black,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 130),
+                        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 107),
                       ),
-                      child: Text(controller.isLoading.isFalse ? "Sign In" : "Loading..."),
+                      child: Text(controller.isLoading.isFalse ?
+                      AppLocalizations.of(context)!.loginSignInButton : AppLocalizations.of(context)!.loginButtonLoading),
                     )),
                     const SizedBox(height: 20),
                     Row(
@@ -105,7 +105,7 @@ class LoginScreen extends GetView<LoginController> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text(
-                            'or'.tr,
+                            AppLocalizations.of(context)!.loginOtherLabel,
                             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -117,7 +117,7 @@ class LoginScreen extends GetView<LoginController> {
                       onPressed: () {
                       },
                       icon: Image.asset('assets/logo_google.jpg', height: 24),
-                      label: Text('Login with Google'.tr),
+                      label: Text(AppLocalizations.of(context)!.loginGoogleButton),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
@@ -129,15 +129,26 @@ class LoginScreen extends GetView<LoginController> {
                       ),
                     ),
                     const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(AppLocalizations.of(context)!.loginNoAccount),
+                        const SizedBox(width: 5),
+                        InkWell(
+                          onTap: () => Get.toNamed(Routes.REGISTER),
+                          child: Text(AppLocalizations.of(context)!.loginSignUp,
+                            style: const TextStyle(
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
-              const SizedBox(height: 30),
-              // Botón de registro
-              ElevatedButton(
-                onPressed: () => Get.toNamed(Routes.REGISTER),
-                child: const Text("REGISTER"),
-              )
             ],
           ),
         ),
