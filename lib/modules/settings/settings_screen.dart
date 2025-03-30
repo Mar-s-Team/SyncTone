@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:synctone/controllers/auth_controller.dart';
+import 'settings_controller.dart';
 import 'package:get/get.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -9,8 +10,14 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _darkMode = false;
-
   final authC = Get.find<AuthController>();
+  final SettingsController settingsController = Get.find<SettingsController>();
+
+  @override
+  void initState() {
+    super.initState();
+    settingsController.generateQR(); // Llama a la función para obtener el QR
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +55,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
               });
             },
             activeColor: Colors.white,
+          ),
+          ListTile(
+            title: Text('My QR Code', style: TextStyle(color: Colors.white, fontSize: 18)),
+            trailing: Icon(Icons.arrow_forward_ios, color: Colors.white),
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Obx(() {
+                            return settingsController.qrCodeWidget.value;
+                          }),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black, // Establece el fondo del botón a negro
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                            },
+                              child: const Text(
+                                'Close',
+                                style: TextStyle(color: Colors.white),
+                            )
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
           ),
           ListTile(
             title: Text('Contact us', style: TextStyle(color: Colors.white, fontSize: 18)),

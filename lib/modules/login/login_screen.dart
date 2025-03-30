@@ -10,14 +10,38 @@ class LoginScreen extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.black, Color(0x00303030)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Contenedor para los campos de email y contraseña
+              Align(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset('assets/logo_synctone.png', width: 80, height: 80),
+                    const SizedBox(width: 10),
+                    Text(
+                      AppLocalizations.of(context)!.appTitle,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 60),
               Container(
                 width: 375,
                 height: 450,
@@ -36,13 +60,14 @@ class LoginScreen extends GetView<LoginController> {
                 ),
                 child: Column(
                   children: [
-                  Text(AppLocalizations.of(context)!.loginTitle,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  ),
+                    Text(
+                      AppLocalizations.of(context)!.loginTitle,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
                     const SizedBox(height: 50),
                     SizedBox(
                       width: 300,
@@ -95,8 +120,9 @@ class LoginScreen extends GetView<LoginController> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 107),
                       ),
-                      child: Text(controller.isLoading.isFalse ?
-                      AppLocalizations.of(context)!.loginSignInButton : AppLocalizations.of(context)!.loginButtonLoading),
+                      child: Text(controller.isLoading.isFalse
+                          ? AppLocalizations.of(context)!.loginSignInButton
+                          : AppLocalizations.of(context)!.loginButtonLoading),
                     )),
                     const SizedBox(height: 20),
                     Row(
@@ -114,14 +140,13 @@ class LoginScreen extends GetView<LoginController> {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton.icon(
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       icon: Image.asset('assets/logo_google.jpg', height: 24),
                       label: Text(AppLocalizations.of(context)!.loginGoogleButton),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
-                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 67),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                           side: const BorderSide(color: Colors.black26),
@@ -136,7 +161,8 @@ class LoginScreen extends GetView<LoginController> {
                         const SizedBox(width: 5),
                         InkWell(
                           onTap: () => Get.toNamed(Routes.REGISTER),
-                          child: Text(AppLocalizations.of(context)!.loginSignUp,
+                          child: Text(
+                            AppLocalizations.of(context)!.loginSignUp,
                             style: const TextStyle(
                               color: Colors.blue,
                               decoration: TextDecoration.underline,

@@ -15,6 +15,12 @@
     "registerPasswordLabel": "Password",
     "registerTitle": "Sign Up",
     "registerSignUpButton": "Create account",
+    "registerOtherLabel" : "Or sign up with",
+    "registerButtonRedirect": "Redirecting",
+    "registerGoogleButton": "Continue with Google",
+    "registerAccount": "Already have an account?",
+    "registerSignIn": "Sign in here",
+    "registerUsername": "Username",
 
     "homeTitle": "SyncTone",
 

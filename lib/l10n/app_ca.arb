@@ -2,7 +2,7 @@
     "appTitle": "SyncTone",
 
     "loginTitle": "Benvingut",
-    "loginEmailLabel": "Email",
+    "loginEmailLabel": "Correu",
     "loginPasswordLabel": "Contrasenya",
     "loginSignInButton": "Iniciar sessió",
     "loginOtherLabel" : "O inicia sessió amb",
@@ -11,10 +11,16 @@
     "loginNoAccount": "No tens compte?",
     "loginSignUp": "Registra't aquí",
 
-    "registerEmailLabel": "Email",
+    "registerEmailLabel": "Correu",
     "registerPasswordLabel": "Contrasenya",
     "registerTitle": "Registra't",
     "registerSignUpButton": "Crear compte",
+    "registerOtherLabel" : "O registra't amb",
+    "registerButtonRedirect": "Redireccionant",
+    "registerGoogleButton": "Continua amb Google",
+    "registerAccount": "Ja tens compte?",
+    "registerSignIn": "Inicia sessió aqui",
+    "registerUsername": "Nom d'usuari",
 
     "homeTitle": "SyncTone",
 

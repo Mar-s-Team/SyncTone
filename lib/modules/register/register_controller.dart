@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class RegisterController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isHidden = true.obs;
+  TextEditingController usernameC = TextEditingController();
   TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
 
@@ -17,12 +18,11 @@ class RegisterController extends GetxController {
         AuthResponse res = await client.auth
             .signUp(email: emailC.text, password: passwordC.text,);
         await client.from("users").update({
-          "first_name": "patata1",
-          "last_name": "patata2",
-          "username": "patata3",
+          "username": usernameC.text,
           "created_at": DateTime.now().toIso8601String(),
           "id_user": res.user!.id,
           }).eq("id_user", res.user!.id);
+
         isLoading.value = false;
 
         Get.defaultDialog(
