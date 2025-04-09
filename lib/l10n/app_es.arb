@@ -28,5 +28,27 @@
 
     "playlistsTitle": "Mis SyncPlaylists",
 
-    "settingsTitle": "Ajustes"
+    "settingsTitle": "Configuración",
+    "settingsLanguage": "Idioma",
+    "settingsDarkMode": "Modo oscuro",
+    "settingsProfileSettings": "Configuración de perfil",
+    "settingsMyQRCode": "Mi código QR",
+    "settingsChangePassword": "Cambiar contraseña",
+    "settingsLogout": "Cerrar sesión de la cuenta",
+    "settingsNotifications": "Notificaciones",
+    "settingsContact": "Contacto",
+    "settingsProfileSettingsMini": "Editar Perfil",
+    "settingsLogoutMini": "¿Cerrar sesión?",
+    "settingsLanguageCat": "Catalán (cat)",
+    "settingsLanguageEsp": "Español (esp)",
+    "settingsLanguageEng": "Inglés (eng)",
+
+
+    "profileEditorTitle": "Editar perfil",
+    "profileEditorFavGenres": "Géneros favoritos",
+    "profileEditorInfo": "Tu información",
+    "profileEditorName": "Tu nombre",
+    "profileEditorUsername": "Tu nombre de usuario",
+    "profileEditorLastName": "Tu apellido",
+    "profileEditorSave": "Guardar cambios"
 }

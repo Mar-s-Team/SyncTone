@@ -17,7 +17,6 @@ class RegisterScreen extends GetView<RegisterController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Contenedor para los campos de email y contraseña
               Container(
                 width: 375,
                 height: 450,

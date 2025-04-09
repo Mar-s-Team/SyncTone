@@ -18,6 +18,8 @@ import 'package:synctone/modules/settings/settings_screen.dart';
 import 'package:synctone/modules/stats/stats_binding.dart';
 import 'package:synctone/modules/stats/stats_screen.dart';
 import '../modules/friends/friends_screen.dart';
+import '../modules/profile_editor/profile_editor_binding.dart';
+import '../modules/profile_editor/profile_editor_screen.dart';
 import '../modules/register/register_binding.dart';
 import '../modules/register/register_screen.dart';
 part 'app_routes.dart';
@@ -77,6 +79,11 @@ class AppPages {
       name: _Paths.LOCATION,
       page: () => const LocationScreen(),
       binding: LocationBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILEEDITOR,
+      page: () => EditProfileScreen(),
+      binding: ProfileEditorBinding(),
     )
   ];
 }
