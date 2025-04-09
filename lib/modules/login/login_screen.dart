@@ -28,7 +28,7 @@ class LoginScreen extends GetView<LoginController> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset('assets/logo_synctone.png', width: 80, height: 80),
+                    Image.asset('assets/logo_synctone.png', width: 120, height: 120),
                     const SizedBox(width: 10),
                     Text(
                       AppLocalizations.of(context)!.appTitle,
@@ -44,7 +44,7 @@ class LoginScreen extends GetView<LoginController> {
               const SizedBox(height: 60),
               Container(
                 width: 375,
-                height: 450,
+                height: 500,
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -110,7 +110,7 @@ class LoginScreen extends GetView<LoginController> {
                         if (controller.isLoading.isFalse) {
                           bool? cekAutoLogout = await controller.login();
                           if (cekAutoLogout != null && cekAutoLogout == true) {
-                            Get.offAllNamed(Routes.HOME);
+                            Get.offAllNamed(Routes.MAIN);
                           }
                         }
                       },

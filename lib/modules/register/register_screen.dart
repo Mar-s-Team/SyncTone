@@ -29,7 +29,7 @@ class RegisterScreen extends GetView<RegisterController> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset('assets/logo_synctone.png', width: 80, height: 80),
+                    Image.asset('assets/logo_synctone.png', width: 120, height: 120),
                     const SizedBox(width: 10),
                     Text(
                       AppLocalizations.of(context)!.appTitle,

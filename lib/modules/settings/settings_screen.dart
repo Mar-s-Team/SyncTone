@@ -25,7 +25,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: Text('Settings', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back,
+            color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -78,7 +79,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           const SizedBox(height: 20),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.black, // Establece el fondo del botón a negro
+                                backgroundColor: Colors.black,
                               ),
                               onPressed: () {
                                 Navigator.of(context).pop();

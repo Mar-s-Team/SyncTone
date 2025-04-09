@@ -28,7 +28,7 @@ void main() async{
       title: 'SyncTone',
       initialRoute: supaProvider.client.auth.currentUser == null
           ? Routes.LOGIN
-          : Routes.HOME,
+          : Routes.MAIN,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
