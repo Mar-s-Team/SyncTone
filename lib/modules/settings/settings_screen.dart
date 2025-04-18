@@ -4,6 +4,8 @@ import 'settings_controller.dart';
 import 'package:get/get.dart';
 
 class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
+
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }

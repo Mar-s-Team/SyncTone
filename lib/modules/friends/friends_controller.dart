@@ -74,8 +74,7 @@ class FriendsController extends GetxController {
           .eq('id_user', user!.id) // Amigos del usuario autentificado
           .order('compatibility', ascending: false)
           .limit(3);
-
-      print(response);
+      //print(response);
       return response;
     } catch (e) {
       print("Error: $e");

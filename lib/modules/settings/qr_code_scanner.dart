@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QRScannerScreen extends StatefulWidget {
@@ -51,3 +51,4 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     );
   }
 }
+ */

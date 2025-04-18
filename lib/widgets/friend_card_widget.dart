@@ -3,20 +3,19 @@ import 'package:get/get.dart';
 import 'package:synctone/models/user_model.dart';
 import 'package:synctone/routes/app_pages.dart';
 
-
 class UserCard extends StatelessWidget {
   const UserCard({
     required this.friend,
     super.key,
   });
-
   final UserModel friend;
 
   @override
   Widget build(BuildContext context) {
-      return Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
+    return Container(
+      padding: const EdgeInsets.all(8),
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
@@ -29,34 +28,34 @@ class UserCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             radius: 20,
-            backgroundImage: NetworkImage('https://via.placeholder.com/40'),
+            backgroundImage: NetworkImage(friend.userImage),
           ),
-          const Spacer(),
-           Column(
+          const SizedBox(width: 12),
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 friend.username,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              const Text(
-                'user@domainname.com',
-                style: TextStyle(color: Colors.grey),
+              Text(
+                '${friend.firstName ?? ''} ${friend.lastName ?? ''}',
+                style: const TextStyle(color: Colors.black),
               ),
             ],
           ),
           const Spacer(),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.purple,
+              backgroundColor: const Color(0xFF4B39EF),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
             onPressed: () {},
-            child: const Text('View'),
+            child: const Text('View', style: TextStyle(color: Colors.white)),
           ),
         ],
       ),

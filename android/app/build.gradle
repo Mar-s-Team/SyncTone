@@ -9,6 +9,7 @@ android {
     namespace = "com.marsteam.synctone"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
+    compileSdkVersion 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -42,3 +43,10 @@ android {
 flutter {
     source = "../.."
 }
+dependencies {
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:2.2.0'
+
+}
+
