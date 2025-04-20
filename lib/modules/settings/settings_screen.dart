@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:synctone/controllers/auth_controller.dart';
 import 'settings_controller.dart';
 import 'package:get/get.dart';
-import 'package:synctone/controllers/auth_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:synctone/routes/app_pages.dart';
 

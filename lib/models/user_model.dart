@@ -46,7 +46,7 @@ class UserModel {
       userImage: json['user_image'] as String ?? '',
     );
   }
-
+  
   Map<String, dynamic> toJson() {
     return {
       'id_user': idUser,

@@ -61,7 +61,8 @@ class RegisterScreen extends GetView<RegisterController> {
                 ),
                 child: Column(
                   children: [
-                    Text(AppLocalizations.of(context)!.registerTitle,
+                    Text(
+                      AppLocalizations.of(context)!.registerTitle,
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
