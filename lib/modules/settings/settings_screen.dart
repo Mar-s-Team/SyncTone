@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:synctone/controllers/auth_controller.dart';
 import 'settings_controller.dart';
 import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
@@ -6,14 +7,22 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:synctone/routes/app_pages.dart';
 
 class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
+
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _darkMode = false;
-  String _selectedLanguage = 'esp'; // Valor por defecto
   final authC = Get.find<AuthController>();
+  final SettingsController settingsController = Get.find<SettingsController>();
+
+  @override
+  void initState() {
+    super.initState();
+    settingsController.generateQR(); // Llama a la función para obtener el QR
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +36,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.white),
+                  icon: const Icon(Icons.arrow_back, color: Colors.white),
                   onPressed: () => Get.offAllNamed(Routes.MAIN),
                 ),
                 Center(
@@ -56,7 +65,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
@@ -66,79 +75,78 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         icon: Icons.music_note,
                         label: "Spotify",
                         onPressed: () {
-                          print("Spotify button pressed");
+                        //  print("Spotify button pressed");
                         },
                       ),
                       _quickAction(
                         icon: Icons.notifications,
                         label: AppLocalizations.of(context)!.settingsNotifications,
                         onPressed: () {
-                          print("Notifications button pressed");
+                         // print("Notifications button pressed");
                         },
                       ),
                       _quickAction(
                         icon: Icons.help_outline,
                         label: AppLocalizations.of(context)!.settingsContact,
                         onPressed: () {
-                          print("Contact button pressed");
+                        //  print("Contact button pressed");
                         },
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Color(0xFF1C1C1C),
+                    color: const Color(0xFF1C1C1C),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(AppLocalizations.of(context)!.settingsTitle,
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18)),
-                      SizedBox(height: 16),
+                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18)),
+                      const SizedBox(height: 16),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: Row(
                           children: [
-                            Icon(Icons.language, color: Colors.purple),
-                            SizedBox(width: 16),
+                            const Icon(Icons.language, color: Colors.purple),
+                            const SizedBox(width: 16),
                             Expanded(
                               child: DropdownButtonFormField<String>(
-                                value: _selectedLanguage,
-                                dropdownColor: Color(0xFF1C1C1C),
-                                style: TextStyle(color: Colors.white),
+                                dropdownColor: const Color(0xFF1C1C1C),
+                                style: const TextStyle(color: Colors.white),
                                 iconEnabledColor: Colors.white70,
                                 decoration: InputDecoration(
                                   labelText: AppLocalizations.of(context)!.settingsLanguage,
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  enabledBorder: UnderlineInputBorder(
+                                  labelStyle: const TextStyle(color: Colors.white),
+                                  enabledBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.white24),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.purple),
                                   ),
                                 ),
                                 items: [
                                   DropdownMenuItem(
-                                    value: 'eng',
+                                    value: 'en',
                                     child: Text(AppLocalizations.of(context)!.settingsLanguageEng),
                                   ),
                                   DropdownMenuItem(
-                                    value: 'esp',
+                                    value: 'es',
                                     child: Text(AppLocalizations.of(context)!.settingsLanguageEsp),
                                   ),
                                   DropdownMenuItem(
-                                    value: 'cat',
+                                    value: 'ca',
                                     child: Text(AppLocalizations.of(context)!.settingsLanguageCat),
                                   ),
                                 ],
                                 onChanged: (val) {
                                   setState(() {
-                                    _selectedLanguage = val!;
-                                    // Get.updateLocale(Locale(_selectedLanguage));
+                                    //String _selectedLanguage = val!;
+                                     Get.updateLocale(Locale(val!));
                                   });
                                 },
                               ),
@@ -164,7 +172,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       _settingItem(Icons.qr_code, AppLocalizations.of(context)!.settingsMyQRCode, onTap: () {}),
                       _settingItem(Icons.lock, AppLocalizations.of(context)!.settingsChangePassword, onTap: () {}),
-                      Divider(color: Colors.white24, height: 32),
+                      const Divider(color: Colors.white24, height: 32),
                       _settingItem(
                         Icons.logout,
                         AppLocalizations.of(context)!.settingsLogout,
@@ -196,8 +204,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             tooltip: label,
           ),
         ),
-        SizedBox(height: 4),
-        Text(label, style: TextStyle(color: Colors.white70, fontSize: 12)),
+        const SizedBox(height: 4),
+        Text(label, style: const TextStyle(color: Colors.white70, fontSize: 12)),
       ],
     );
   }
@@ -206,10 +214,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Icon(icon, color: Colors.purple),
-      title: Text(title, style: TextStyle(color: Colors.white)),
+      title: Text(title, style: const TextStyle(color: Colors.white)),
       trailing: trailingText != null
-          ? Text(trailingText, style: TextStyle(color: Colors.white70))
-          : Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
+          ? Text(trailingText, style: const TextStyle(color: Colors.white70))
+          : const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
       onTap: onTap,
     );
   }
@@ -218,7 +226,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Icon(icon, color: Colors.purple),
-      title: Text(title, style: TextStyle(color: Colors.white)),
+      title: Text(title, style: const TextStyle(color: Colors.white)),
       trailing: Switch(
         value: value,
         onChanged: onChanged,

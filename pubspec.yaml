@@ -18,6 +18,11 @@ dependencies:
     sdk: flutter
   intl: any
   image_picker: ^1.0.4
+  qr_flutter: ^4.1.0
+  #qr_code_scanner: ^0.5.2#
+  google_maps_flutter: ^2.6.0
+  google_maps_flutter_web: ^0.5.4+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -27,5 +32,6 @@ dev_dependencies:
 flutter:
   assets:
     - assets/logo_google.jpg
+    - assets/logo_synctone.png
   uses-material-design: true
   generate: true
