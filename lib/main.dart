@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 import 'package:synctone/routes/app_pages.dart';
-import 'package:synctone/languages/lang.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

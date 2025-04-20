@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SettingsController extends GetxController {
   // Usamos Rx<Widget> para poder manipularlo como un Widget en el árbol de widgets
@@ -41,5 +43,10 @@ class SettingsController extends GetxController {
         color: Colors.black,
       ),
     );
+  }
+  Future<XFile?> pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    return image;
   }
 }

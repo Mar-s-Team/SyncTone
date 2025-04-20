@@ -34,5 +34,27 @@
 
     "playlistsTitle": "Les meves SyncPlaylists",
 
-    "settingsTitle": "Configuració"
+    "settingsTitle": "Configuració",
+    "settingsLanguage": "Idioma",
+    "settingsDarkMode": "Mode fosc",
+    "settingsProfileSettings": "Configuració del perfil",
+    "settingsMyQRCode": "El meu codi QR",
+    "settingsChangePassword": "Canviar contrasenya",
+    "settingsNotifications": "Notificacions",
+    "settingsContact": "Contacte",
+    "settingsLogout": "Tancar sessió del compte",
+    "settingsProfileSettingsMini": "Editar Perfil",
+    "settingsLogoutMini": "Tancar sessió?",
+    "settingsLanguageCat": "Català (cat)",
+    "settingsLanguageEsp": "Espanyol (esp)",
+    "settingsLanguageEng": "Anglès (eng)",
+
+    "profileEditorTitle": "Edita el perfil",
+    "profileEditorFavGenres": "Gèneres preferits",
+    "profileEditorInfo": "La teva informació",
+    "profileEditorName": "El teu nom",
+    "profileEditorUsername": "Nom d'usuari",
+    "profileEditorLastName": "El teu cognom",
+    "profileEditorSave": "Desa els canvis"
+
 }
