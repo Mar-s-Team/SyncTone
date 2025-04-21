@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:synctone/controllers/auth_controller.dart';
+import 'package:synctone/models/user_model.dart';
 import 'package:synctone/routes/app_pages.dart';
-import '../../routes/app_pages.dart';
 
 class EditProfileScreen extends StatefulWidget {
   @override
@@ -10,10 +11,12 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  final AuthController authC = Get.find<AuthController>();
   final _nameController = TextEditingController();
   final _usernameController = TextEditingController();
   final _cityController = TextEditingController();
   final _spotifyUsernameController = TextEditingController();
+
 
   final List<String> _genres = [
     "Pop", "Rock", "Rap", "Hip Hop", "House",
@@ -24,6 +27,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    UserModel? loggedUser = authC.loggedUser;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
