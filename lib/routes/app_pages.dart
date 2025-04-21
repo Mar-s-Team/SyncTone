@@ -47,7 +47,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => const LoginScreen(),
+      page: () => LoginScreen(),
       binding: LoginBinding(),
     ),
     GetPage(
@@ -57,7 +57,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SETTINGS,
-      page: () =>  SettingsScreen(),
+      page: () =>  const SettingsScreen(),
       binding: SettingsBinding(),
     ),
     GetPage(
