@@ -5,7 +5,7 @@ import 'package:synctone/modules/settings/settings_controller.dart';
 class SettingsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SettingsController>(
+    Get.create<SettingsController>(
           () => SettingsController(),
     );
   }
