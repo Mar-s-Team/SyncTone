@@ -38,14 +38,15 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       idUser: json['id_user'] as String,
-      firstName: json['first_name'] as String,
-      lastName: json['last_name'] as String,
+      firstName: json['first_name'] as String? ?? '',
+      lastName: json['last_name'] as String? ?? '',
       username: json['username'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
-      spotifyAccount: json['spotify_account'] as String?,
-      userImage: json['user_image'] as String ?? '',
+      spotifyAccount: json['spotify_account'] as String? ?? '',
+      userImage: json['user_image'] as String? ?? '',
     );
   }
+  
   Map<String, dynamic> toJson() {
     return {
       'id_user': idUser,

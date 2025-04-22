@@ -16,6 +16,7 @@ abstract class Routes {
   static const FRIENDS = _Paths.FRIENDS;
   static const PLAYLISTS = _Paths.PLAYLISTS;
   static const SETTINGS = _Paths.SETTINGS;
+  static const PROFILEEDITOR = _Paths.PROFILEEDITOR;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const FRIENDS = '/friends';
   static const PLAYLISTS = '/playlists';
   static const SETTINGS = '/settings';
+  static const PROFILEEDITOR ='/profile_editor';
 }
