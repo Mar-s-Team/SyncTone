@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'login_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends GetView<LoginController> {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+  final AuthController authC = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +110,10 @@ class LoginScreen extends GetView<LoginController> {
                     Obx(() => ElevatedButton(
                       onPressed: () async {
                         if (controller.isLoading.isFalse) {
-                          bool? cekAutoLogout = await controller.login();
-                          if (cekAutoLogout != null && cekAutoLogout == true) {
+                          bool? isLogin = await controller.login();
+                          if (isLogin != null && isLogin == true) {
                             Get.offAllNamed(Routes.MAIN);
+                            authC.loadUser();
                           }
                         }
                       },
