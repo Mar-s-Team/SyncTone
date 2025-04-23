@@ -6,7 +6,7 @@ class ProfileEditorController extends GetxController {
   final nameController            = TextEditingController();
   final lastNameController        = TextEditingController();
   final usernameController        = TextEditingController();
-  final spotifyUsernameController = TextEditingController();
+  //final spotifyUsernameController = TextEditingController();
 
   final genres = <String>[].obs;
   final selectedGenres = <String>{}.obs;
@@ -37,7 +37,7 @@ class ProfileEditorController extends GetxController {
       'first_name': nameController.text,
       'last_name': lastNameController.text,
       'username': usernameController.text,
-      'spotify_username': spotifyUsernameController.text,
+      //'spotify_username': spotifyUsernameController.text,
     })
         .eq('id_user', user.id);
 
@@ -64,16 +64,26 @@ class ProfileEditorController extends GetxController {
   // DEBUG
 
   Future<void> loadGenres() async {
-    final data = await client.from('genres').select('name');
-    genres.assignAll(List<String>.from(data.map((e) => e['name'])));
+    try {
+      final response = await Supabase.instance.client
+          .from('genres')
+          .select('name');
+
+      print('Géneros recibidos: $response');
+
+      final genreNames = List<String>.from(response.map((e) => e['name']));
+      genres.assignAll(genreNames);
+    } catch (error) {
+      print('Error al cargar géneros: $error');
+    }
   }
 
   @override
   void onClose() {
-    nameController.dispose();
-    lastNameController.dispose();
-    usernameController.dispose();
-    spotifyUsernameController.dispose();
+    //nameController.dispose();
+    //lastNameController.dispose();
+    //usernameController.dispose();
+    //spotifyUsernameController.dispose();
     super.onClose();
   }
 }

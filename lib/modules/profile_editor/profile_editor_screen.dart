@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../controllers/auth_controller.dart';
 import 'profile_editor_controller.dart';
 
 class EditProfileScreen extends GetView<ProfileEditorController> {
   const EditProfileScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+    final authC = Get.find<AuthController>();
     final t = AppLocalizations.of(context)!;
+
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -19,6 +23,11 @@ class EditProfileScreen extends GetView<ProfileEditorController> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Get.toNamed(Routes.SETTINGS),
+            /*onPressed: (){final authC = Get.find<AuthController>();
+          authC.loadUser();
+        Get.offNamed((Routes.SETTINGS));*/
+
+
         ),
         title: Text(t.profileEditorTitle, style: const TextStyle(color: Colors.white)),
       ),
@@ -119,7 +128,7 @@ class EditProfileScreen extends GetView<ProfileEditorController> {
             ],
           ),
           const SizedBox(height: 12),
-          TextField(
+          /*TextField(
             controller: controller.spotifyUsernameController,
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(
@@ -132,7 +141,7 @@ class EditProfileScreen extends GetView<ProfileEditorController> {
                 borderSide: BorderSide.none,
               ),
             ),
-          ),
+          ),*/
         ],
       ),
     );

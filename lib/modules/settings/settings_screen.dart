@@ -11,7 +11,8 @@ class SettingsScreen extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     final authC = Get.find<AuthController>();
-    controller.generateQR(); // QR se genera al abrir la pantalla
+    controller.generateQR();
+    authC.loadUser();
 
     return Scaffold(
       backgroundColor: Colors.black,
