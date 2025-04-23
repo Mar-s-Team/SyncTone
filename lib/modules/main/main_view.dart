@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 
 class MainScreen extends StatelessWidget{
    MainScreen({super.key});
 
-  final BottomNavigatorController controller =
-  Get.put(BottomNavigatorController());
+  final BottomNavigatorController controller = Get.put(BottomNavigatorController());
+  final AuthController authC = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
+    authC.loadUser();
     return Obx(
         () => GestureDetector(
           onTap: () {

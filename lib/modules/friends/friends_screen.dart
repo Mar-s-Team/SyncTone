@@ -16,48 +16,11 @@ class FriendsScreen extends StatefulWidget {
 }
 
 class _FriendsScreenState extends State<FriendsScreen> {
-  final FriendsController friendsController = FriendsController();
-  List<UserModel> topFriends = [];
-  List<UserModel> allFriends = [];
-  List<UserModel> filteredFriends = [];
-
-  @override
-  void initState() {
-    super.initState();
-    friendsController.getTopFriends().then((data) {
-      setState(() {
-        topFriends = data.map((friendMap) {
-          final user = friendMap['users'] ?? {};
-          return UserModel.friendsRanking(
-            idUser: friendMap['id_friend'],
-            username: user['username'] ?? '',
-            userImage: user['user_image'] ?? '',
-          );
-        }).toList();
-      });
-    });
-
-    friendsController.getFriends().then((data) {
-      setState(() {
-        allFriends = data.map((friendMap) {
-          final user = friendMap['users'] ?? {};
-          print('Friend Data: ${friendMap['first_name']} ${friendMap['last_name']}');
-          return UserModel.friends(
-            idUser: friendMap['id_friend'],
-            firstName: friendMap['first_name'],
-            lastName: friendMap['last_name'],
-            username: user['username'] ?? '',
-            userImage: user['user_image'] ?? '',
-          );
-        }).toList();
-        filteredFriends = allFriends;
-      });
-    });
-
-  }
+  FriendsController controller = FriendsController();
 
   @override
   Widget build(BuildContext context) {
+    controller.loadData();
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.friendsTitle),
@@ -69,10 +32,10 @@ class _FriendsScreenState extends State<FriendsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FriendSearchBar(
-                allFriends: allFriends,
+                allFriends: controller.allFriends,
                 onSearch: (results) {
                 setState(() {
-                  filteredFriends = results;
+                  controller.filteredFriends = results;
                 });
               },
             ),
@@ -81,27 +44,27 @@ class _FriendsScreenState extends State<FriendsScreen> {
             const SizedBox(height: 10),
               SizedBox(
                 height: 190,
-                child: topFriends.isEmpty
+                child: controller.topFriends.isEmpty
                     ? const Center(child: CircularProgressIndicator())
                     : Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    if (topFriends.length > 1)
+                    if (controller.topFriends.length > 1)
                       Positioned(
                         left: 50,
                         top: 50,
-                        child: FriendsRanking(rank: 2, friend: topFriends[1]),
+                        child: FriendsRanking(rank: 2, friend: controller.topFriends[1]),
                       ),
-                    if (topFriends.isNotEmpty)
+                    if (controller.topFriends.isNotEmpty)
                       Positioned(
                         top: 0,
-                        child: FriendsRanking(rank: 1, friend: topFriends[0]),
+                        child: FriendsRanking(rank: 1, friend: controller.topFriends[0]),
                       ),
-                    if (topFriends.length > 2)
+                    if (controller.topFriends.length > 2)
                       Positioned(
                         right: 50,
                         top: 50,
-                        child: FriendsRanking(rank: 3, friend: topFriends[2]),
+                        child: FriendsRanking(rank: 3, friend: controller.topFriends[2]),
                       ),
                   ],
                 ),
@@ -114,21 +77,21 @@ class _FriendsScreenState extends State<FriendsScreen> {
                   IconButton(
                     icon: const Icon(Icons.add_circle, color: Colors.white, size: 30),
                     onPressed: () async {
-                      await friendsController.showQRInputDialog(context);
+                      await controller.showQRInputDialog(context);
                     },
                   ),
                 ],
               ),
               const SizedBox(height: 10),
               Expanded(
-                child: filteredFriends.isEmpty
+                child: controller.filteredFriends.isEmpty
                     ? const Center(child: Text("No friends found"))
                     : ListView.builder(
-                  itemCount: filteredFriends.length,
+                  itemCount: controller.filteredFriends.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 12),
-                      child: UserCard(friend: filteredFriends[index]),
+                      child: UserCard(friend: controller.filteredFriends[index]),
                     );
                   },
                 ),

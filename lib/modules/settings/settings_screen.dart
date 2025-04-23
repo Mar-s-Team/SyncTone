@@ -12,7 +12,6 @@ class SettingsScreen extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     final authC = Get.find<AuthController>();
     controller.generateQR();
-    authC.loadUser();
 
     return Scaffold(
       backgroundColor: Colors.black,
