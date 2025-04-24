@@ -77,7 +77,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOCATION,
-      page: () => const LocationScreen(),
+      page: () => LocationScreen(),
       binding: LocationBinding(),
     ),
     GetPage(

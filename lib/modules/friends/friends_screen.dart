@@ -71,14 +71,14 @@ class _FriendsScreenState extends State<FriendsScreen> {
               FriendSearchBar(
                 allFriends: allFriends,
                 onSearch: (results) {
-                setState(() {
-                  filteredFriends = results;
-                });
-              },
-            ),
-            const SizedBox(height: 12),
-            const Text("Top SyncFriends", style: TextStyle(fontSize: 18, color: Colors.white)),
-            const SizedBox(height: 10),
+                  setState(() {
+                    filteredFriends = results;
+                  });
+                },
+              ),
+              const SizedBox(height: 12),
+              const Text("Top SyncFriends", style: TextStyle(fontSize: 18, color: Colors.white)),
+              const SizedBox(height: 10),
               SizedBox(
                 height: 190,
                 child: topFriends.isEmpty
@@ -133,7 +133,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                   },
                 ),
               ),
-        /*
+              /*
         child: ElevatedButton(
           onPressed: () async {
             // Usamos el controlador para mostrar el diálogo

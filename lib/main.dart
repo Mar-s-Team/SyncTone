@@ -10,7 +10,7 @@ import 'package:synctone/routes/app_pages.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load();
+  await dotenv.load(fileName: 'assets/.env');
 
   String supaUri = dotenv.get('SUPABASE_URL');
   String supaAnon = dotenv.get('SUPABASE_ANON_KEY');
