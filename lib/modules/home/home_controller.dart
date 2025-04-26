@@ -1,21 +1,40 @@
 import 'package:get/get.dart';
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:synctone/models/song_model.dart';
 
 class HomeController extends GetxController {
   NotchBottomBarController bottomBarController = NotchBottomBarController();
   var index = 0.obs;
   void setIndex(i) => index.value = i;
 
-  // RxList allPlayers = List<Player>.empty().obs;
-  // Profile? profile;
-  // SupabaseClient client = Supabase.instance.client;
-  //
-  // Future<Profile> getUserProfile() async{
-  //   List<dynamic> res = await client
-  //       .from("users")
-  //       .select()
-  //       .match({'id': client.auth.currentUser!.id});
-  //   Profile profileData = Profile.fromJson(res.first);
-  //   return profileData;
-  //}
+  var isLoading = false.obs;
+  SupabaseClient client = Supabase.instance.client;
+  RxList<SongModel> newReleases = List<SongModel>.empty().obs;
+
+  @override
+  void onInit() async {
+    isLoading.value = true;
+    await getNewReleases();
+    isLoading.value = false;
+    super.onInit();
+  }
+
+  Future<void> getNewReleases() async {
+    try{
+      List<dynamic> songs = await client
+          .from('songs')
+          .select('*, albums(*, artists(*)), artists(*), genres(*)')
+          .order('release_date')
+          .limit(3);
+
+      List<SongModel> songsData = SongModel.fromJsonList(songs);
+      newReleases(songsData);
+      newReleases.refresh();
+    }
+    catch (e){
+      print("Error al recuperar new releases: $e");
+    }
+  }
+
 }

@@ -23,6 +23,8 @@
     "registerUsername": "Nombre de usuario",
 
     "homeTitle": "SyncTone",
+    "homeSearchLabel": "Buscar",
+    "homeNewReleases": "Nuevos estrenos",
 
     "locationsTitle": "Mis SyncLocations",
 

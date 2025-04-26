@@ -1,15 +1,23 @@
 class GenreModel {
-  final String idGenre;
-  final String name;
-  final String? description;
+  String? idGenre;
+  String? name;
+  String? description;
 
   GenreModel({
-    required this.idGenre,
-    required this.name,
+    this.idGenre,
+    this.name,
     this.description,
   });
 
-  factory GenreModel.fromJson(Map<String, dynamic> json) {
+  static GenreModel fromJson(dynamic json){
+    return GenreModel(
+      idGenre: json['id_genre'],
+      name: json['name'],
+      description: json['description'],
+    );
+  }
+
+  factory GenreModel.fromMap(Map<String, dynamic> json) {
     return GenreModel(
       idGenre: json['id_genre'] as String,
       name: json['name'] as String,

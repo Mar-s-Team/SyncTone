@@ -1,34 +1,36 @@
+
+import 'artist_model.dart';
+
 class AlbumModel {
-  final String idAlbum;
-  final String title;
-  final String idArtist;
-  final DateTime releaseDate;
-  final String? coverUrl;
+  String? idAlbum;
+  String? title;
+  ArtistModel? artist;
+  DateTime? releaseDate;
+  String? coverUrl;
 
   AlbumModel({
-    required this.idAlbum,
-    required this.title,
-    required this.idArtist,
-    required this.releaseDate,
+    this.idAlbum,
+    this.title,
+    this.artist,
+    this.releaseDate,
     this.coverUrl,
   });
 
-  factory AlbumModel.fromJson(Map<String, dynamic> json) {
-    return AlbumModel(
-      idAlbum: json['id_album'] as String,
-      title: json['title'] as String,
-      idArtist: json['id_artist'] as String,
-      releaseDate: DateTime.parse(json['release_date'] as String),
-      coverUrl: json['cover_url'] as String?,
-    );
+  static fromJson(dynamic json) {
+    AlbumModel album = AlbumModel();
+    album.idAlbum =  json['id_album'];
+    album.title = json['title'] ;
+    album.artist = ArtistModel.fromJson(json['artists']);
+    album.releaseDate =  DateTime.parse(json['release_date'] as String);
+    album.coverUrl = json['cover_url'];
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id_album': idAlbum,
       'title': title,
-      'id_artist': idArtist,
-      'release_date': releaseDate.toIso8601String(),
+      'id_artist': artist?.toJson(),
+      'release_date': releaseDate?.toIso8601String(),
       'cover_url': coverUrl,
     };
   }
