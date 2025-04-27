@@ -5,7 +5,7 @@ class PlayerBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<PlayerController>(
-          () => PlayerController(),
+          () => PlayerController(null),
     );
   }
 }

@@ -25,10 +25,12 @@
     "homeTitle": "SyncTone",
     "homeSearchLabel": "Buscar",
     "homeNewReleases": "Nuevos estrenos",
+    "homeTrendingSpanish": "Populares en español",
 
     "locationsTitle": "Mis SyncLocations",
 
     "playerTitle": "Escuchando ahora",
+    "playerUpNext": "A continuación",
 
     "statsTitle": "Mis SyncStats",
 

@@ -1,21 +1,39 @@
 import 'package:get/get.dart';
+import 'package:synctone/api/api_service.dart';
+import 'package:synctone/models/track.dart';
 import 'package:synctone/modules/friends/friends_screen.dart';
 import 'package:synctone/modules/home/home_screen.dart';
 import 'package:synctone/modules/location/location_screen.dart';
+import 'package:synctone/modules/player/player_controller.dart';
 import 'package:synctone/modules/player/player_screen.dart';
 import 'package:synctone/modules/playlists/playlists_screen.dart';
 import 'package:synctone/modules/stats/stats_screen.dart';
 
 class BottomNavigatorController extends GetxController {
-  var screens = const [
+  var screens = [
     HomeScreen(),
-    LocationScreen(),
+    const LocationScreen(),
     PlayerScreen(),
-    StatsScreen(),
-    FriendsScreen(),
-    PlaylistsScreen(),
+    const StatsScreen(),
+    const FriendsScreen(),
+    const PlaylistsScreen(),
   ];
   var index = 0.obs;
 
-  void setIndex(i) => index.value = i;
+  void setIndex(i) async{
+    if(i == 2) {
+      playSong(await ApiService.getTrackById('1532771'));
+    }
+    else {
+      index.value = i;
+    }
+
+  }
+
+    void playSong(Track? track){
+      index.value = 2;
+      Get.put(PlayerController(track));
+      PlayerScreen();
+    }
+
 }

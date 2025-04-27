@@ -4,10 +4,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:synctone/models/user_model.dart';
 import 'package:synctone/routes/app_pages.dart';
 
+import '../models/track.dart';
+
 class AuthController extends GetxController {
   Timer? authTimer;
   SupabaseClient client = Supabase.instance.client;
   UserModel? loggedUser;
+  Track? currentSong;
 
   Future<void> logout() async {
     await client.auth.signOut();

@@ -26,7 +26,7 @@ class MainScreen extends StatelessWidget{
             ),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: controller.index.value,
-              onTap: (index) => controller.setIndex(index),
+              onTap: (index) => Get.find<BottomNavigatorController>().setIndex(index),
               type: BottomNavigationBarType.fixed,
               backgroundColor: const Color(0xFF2B2B2B),
               showSelectedLabels: false,

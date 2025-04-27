@@ -25,10 +25,12 @@
     "homeTitle": "SyncTone",
     "homeSearchLabel": "Cercar",
     "homeNewReleases": "Noves estrenes",
+    "homeTrendingSpanish": "Populars en espanyol",
 
     "locationsTitle": "Les meves SyncLocations",
 
     "playerTitle": "Escoltant ara",
+    "playerUpNext": "A continuació",
 
     "statsTitle": "Les meves SyncStats",
 

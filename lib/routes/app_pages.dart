@@ -67,7 +67,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PLAYER,
-      page: () => const PlayerScreen(),
+      page: () => PlayerScreen(),
       binding: PlayerBinding(),
     ),
     GetPage(
