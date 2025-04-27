@@ -10,9 +10,7 @@ import '../../models/song_map.dart';
 class LocationController extends GetxController {
   late MapController mapController;
   SupabaseClient client = Supabase.instance.client;
-  final initialPosition = const LatLng(41.35934969449732, 2.076988185642747); // Mercadona
-  final initialPosition2 = const LatLng(41.36098285791049, 2.079028340233199); // Gestoria
-  final sarriaPosition = const LatLng(41.39493743803288, 2.1275733516533615); // Salesians de Sarria
+  final initialPosition = const LatLng(40.4168, -3.7038);
   final double initialZoom = 14.0;
   final markers = <Marker>{}.obs;
   Rx<LatLng> realTimePosition = Rx<LatLng>(const LatLng(40.4168, -3.7038));
@@ -43,7 +41,7 @@ class LocationController extends GetxController {
           height: 80,
           builder: (ctx) => GestureDetector(
             onTap: () {
-              print('Clicaste en: ${markerModel.title}');
+              _handleMarkerTap(ctx, LatLng(markerModel.latitude, markerModel.longitude));
             },
             child: const Icon(
               Icons.location_on,

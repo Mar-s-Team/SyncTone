@@ -35,6 +35,10 @@
     "statsTitle": "My SyncStats",
 
     "friendsTitle": "My SyncFriends",
+    "topFriends": "Top SyncFriends",
+    "myFriends": "My SyncFriends",
+    "noFriends": "No friends found",
+    "cancelScanning": "Cancel",
 
     "playlistsTitle": "My SyncPlaylists",
 
@@ -43,6 +47,7 @@
     "settingsDarkMode": "Dark Mode",
     "settingsProfileSettings": "Profile Settings",
     "settingsMyQRCode": "My QR Code",
+    "settingsMyQRCodeClose": "Close",
     "settingsNotifications": "Notifications",
     "settingsContact": "Contact",
     "settingsChangePassword": "Change Password",

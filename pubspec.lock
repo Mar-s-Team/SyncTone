@@ -41,14 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  archive:
-    dependency: transitive
-    description:
-      name: archive
-      sha256: "2fde1607386ab523f7a36bb3e7edb43bd58e6edaf2ffb29d8a6d578b297fdbbd"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.7"
   async:
     dependency: transitive
     description:
@@ -66,7 +58,7 @@ packages:
     source: hosted
     version: "0.1.25"
   audio_video_progress_bar:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: audio_video_progress_bar
       sha256: "552b1f73c56c4c88407999e0a8507176f60c56de3e6d63bc20a0eab48467d4c9"
@@ -74,7 +66,7 @@ packages:
     source: hosted
     version: "2.0.3"
   audioplayers:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: audioplayers
       sha256: a5341380a4f1d3a10a4edde5bb75de5127fe31e0faa8c4d860e64d2f91ad84c7
@@ -202,7 +194,7 @@ packages:
     source: hosted
     version: "1.0.8"
   fade_shimmer:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: fade_shimmer
       sha256: dd186b2e1ad1bf87cc44b37bb9c00f4a69ac1276a33af0af5e27e354f5b02bd3
@@ -279,7 +271,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_bloc:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: flutter_bloc
       sha256: "1046d719fbdf230330d3443187cc33cc11963d15c9089f6cc56faa42a4c5f0cc"
@@ -329,7 +321,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_web_auth:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: flutter_web_auth
       sha256: "95e4856e24fb6ac1678f5ff334743b63f782d839ab324543d29ccbd295176209"
@@ -345,10 +337,10 @@ packages:
     dependency: transitive
     description:
       name: freezed_annotation
-      sha256: c87ff004c8aa6af2d531668b46a4ea379f7191dc6dfa066acd53d506da6e044b
+      sha256: c2e2d632dd9b8a2b7751117abcfc2b4888ecfe181bd9fca7170d9ef02e595fe2
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "2.4.4"
   functions_client:
     dependency: transitive
     description:
@@ -573,6 +565,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.19.0"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.7"
   json_annotation:
     dependency: transitive
     description:
@@ -582,7 +582,7 @@ packages:
     source: hosted
     version: "4.9.0"
   just_audio:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: just_audio
       sha256: f978d5b4ccea08f267dae0232ec5405c1b05d3f3cd63f82097ea46c015d5c09e
@@ -709,6 +709,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  mobile_scanner:
+    dependency: "direct main"
+    description:
+      name: mobile_scanner
+      sha256: "1b60b8f9d4ce0cb0e7d7bc223c955d083a0737bee66fa1fcfe5de48225e0d5b3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.5.7"
   nested:
     dependency: transitive
     description:
@@ -726,7 +734,7 @@ packages:
     source: hosted
     version: "2.0.3"
   palette_generator:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: palette_generator
       sha256: "5a96b78983752faeb94866b30cb8f52e94ef176722bf51d1c5541d6a3044368f"
@@ -861,14 +869,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  posix:
-    dependency: transitive
-    description:
-      name: posix
-      sha256: f0d7856b6ca1887cfa6d1d394056a296ae33489db914e365e2044fdada449e62
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.2"
   postgrest:
     dependency: transitive
     description:
@@ -942,7 +942,7 @@ packages:
     source: hosted
     version: "2.1.0"
   scrollable_positioned_list:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: scrollable_positioned_list
       sha256: "1b54d5f1329a1e263269abc9e2543d90806131aa14fe7c6062a8054d57249287"
@@ -1005,14 +1005,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
-  simple_sparse_list:
-    dependency: transitive
-    description:
-      name: simple_sparse_list
-      sha256: aa648fd240fa39b49dcd11c19c266990006006de6699a412de485695910fbc1f
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.4"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -1027,7 +1019,7 @@ packages:
     source: hosted
     version: "1.10.0"
   spotify:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: spotify
       sha256: "705f09a457a893973451c15f4072670ac4783d67e42c35c080c55a48dee3a01f"
@@ -1134,10 +1126,10 @@ packages:
     dependency: transitive
     description:
       name: unicode
-      sha256: "0d99edbd2e74726bed2e4989713c8bec02e5581628e334d8c88c0271593fb402"
+      sha256: "0f69e46593d65245774d4f17125c6084d2c20b4e473a983f6e21b7d7762218f1"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.8"
+    version: "0.3.1"
   url_launcher:
     dependency: transitive
     description:
@@ -1283,13 +1275,13 @@ packages:
     source: hosted
     version: "2.0.3"
   youtube_explode_dart:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: youtube_explode_dart
-      sha256: "7be30342df5bebc3e50cc0d142284db18ffd134104257e74e168742676e5ba15"
+      sha256: "9f044feb602659392a7c7a160e74d373671c959373a199658d687fe18ba1ab07"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.3.9"
 sdks:
   dart: ">=3.5.3 <3.7.0"
   flutter: ">=3.24.0"

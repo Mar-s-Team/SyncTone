@@ -11,7 +11,7 @@ class SettingsScreen extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     final authC = Get.find<AuthController>();
-    controller.generateQR();
+    //controller.generateQR();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -28,9 +28,9 @@ class SettingsScreen extends GetView<SettingsController> {
               Center(
                 child: Column(
                   children: [
-                    Stack(
+                    const Stack(
                       children: [
-                        const CircleAvatar(
+                        CircleAvatar(
                           radius: 45,
                           backgroundImage: AssetImage('assets/avatar_placeholder.png'),
                         ),
@@ -40,7 +40,7 @@ class SettingsScreen extends GetView<SettingsController> {
                           child: CircleAvatar(
                             radius: 14,
                             backgroundColor: Colors.purple,
-                            child: const Icon(Icons.edit, size: 16, color: Colors.white),
+                            child: Icon(Icons.edit, size: 16, color: Colors.white),
                           ),
                         ),
                       ],
@@ -108,7 +108,48 @@ class SettingsScreen extends GetView<SettingsController> {
             trailingText: AppLocalizations.of(context)!.settingsProfileSettingsMini,
             onTap: () => Get.offAllNamed(Routes.PROFILEEDITOR),
           ),
-          _settingItem(Icons.qr_code, AppLocalizations.of(context)!.settingsMyQRCode, onTap: () {}),
+          _settingItem(
+            Icons.qr_code,
+            AppLocalizations.of(context)!.settingsMyQRCode,
+            onTap: () async {
+              await controller.generateQR();
+              Get.dialog(
+                AlertDialog(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  title: Text(AppLocalizations.of(context)!.settingsMyQRCode,  textAlign: TextAlign.center, style: const TextStyle(color: Colors.black)),
+                  content: Obx(
+                    () => SizedBox(
+                      width: 250,
+                      height: 250,
+                      child: controller.qrCodeWidget.value,
+                    ),
+                  ),
+                  actions: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        OutlinedButton(
+                          onPressed: () => Get.back(),
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            side: const BorderSide(color: Colors.white),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child:
+                            Text(AppLocalizations.of(context)!.settingsMyQRCodeClose,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
           _settingItem(Icons.lock, AppLocalizations.of(context)!.settingsChangePassword, onTap: () {}),
           const Divider(color: Colors.white24, height: 32),
           _settingItem(

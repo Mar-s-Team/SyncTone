@@ -16,7 +16,7 @@
     "registerTitle": "Regístrate",
     "registerSignUpButton": "Crear cuenta",
     "registerOtherLabel" : "O regístrate con",
-    "registerButtonRedirect": "Redireccionando",
+    "registerButtonRedirect": "Redirigiendo",
     "registerGoogleButton": "Continua con Google",
     "registerAccount": "¿Ya tienes cuenta?",
     "registerSignIn": "Inicia sesión aquí",
@@ -34,7 +34,11 @@
 
     "statsTitle": "Mis SyncStats",
 
-    "friendsTitle": "Mis SyncFriends",
+    "friendsTitle": "Mis SyncAmigos",
+    "topFriends": "Mejores SyncAmigos",
+    "myFriends": "Mis SyncAmigos",
+    "noFriends": "Amigos no encontrados",
+    "cancelScanning": "Cancelar",
 
     "playlistsTitle": "Mis SyncPlaylists",
 
@@ -43,6 +47,7 @@
     "settingsDarkMode": "Modo oscuro",
     "settingsProfileSettings": "Configuración de perfil",
     "settingsMyQRCode": "Mi código QR",
+    "settingsMyQRCodeClose": "Cerrar",
     "settingsChangePassword": "Cambiar contraseña",
     "settingsLogout": "Cerrar sesión de la cuenta",
     "settingsNotifications": "Notificaciones",

@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 
+import '../player/player_controller.dart';
+
 class MainScreen extends StatelessWidget{
    MainScreen({super.key});
-
-  final BottomNavigatorController controller = Get.put(BottomNavigatorController());
-  final AuthController authC = Get.find<AuthController>();
+   final PlayerController playerController = Get.put(PlayerController(null));
+   final BottomNavigatorController controller = Get.put(BottomNavigatorController());
+   final AuthController authC = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {

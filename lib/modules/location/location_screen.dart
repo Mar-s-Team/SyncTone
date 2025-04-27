@@ -35,7 +35,6 @@ class LocationScreen extends StatelessWidget {
           ),
           Obx(() => MarkerLayer(
             markers: [
-              // 1. Marcador de tu ubicación actual
               Marker(
                 point: controller.realTimePosition.value,
                 width: 50,
@@ -46,7 +45,6 @@ class LocationScreen extends StatelessWidget {
                   size: 40,
                 ),
               ),
-              // 2. Los otros marcadores que vienen de Supabase
               ...controller.markers,
             ],
           )),

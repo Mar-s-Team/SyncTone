@@ -16,7 +16,7 @@
     "registerTitle": "Registra't",
     "registerSignUpButton": "Crear compte",
     "registerOtherLabel" : "O registra't amb",
-    "registerButtonRedirect": "Redireccionant",
+    "registerButtonRedirect": "Redirigint",
     "registerGoogleButton": "Continua amb Google",
     "registerAccount": "Ja tens compte?",
     "registerSignIn": "Inicia sessió aqui",
@@ -34,7 +34,12 @@
 
     "statsTitle": "Les meves SyncStats",
 
-    "friendsTitle": "Els meus SyncFriends",
+    "friendsTitle": "Els meus SyncAmics",
+    "topFriends": "Millors SyncAmics",
+    "myFriends": "Els meus SyncAmics",
+    "noFriends": "Amics no trobats",
+    "cancelScanning": "Cancel·lar",
+
 
     "playlistsTitle": "Les meves SyncPlaylists",
 
@@ -43,6 +48,7 @@
     "settingsDarkMode": "Mode fosc",
     "settingsProfileSettings": "Configuració del perfil",
     "settingsMyQRCode": "El meu codi QR",
+    "settingsMyQRCodeClose": "Tancar",
     "settingsChangePassword": "Canviar contrasenya",
     "settingsNotifications": "Notificacions",
     "settingsContact": "Contacte",

@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:image_picker/image_picker.dart';
 
 class SettingsController extends GetxController {
   // Usamos Rx<Widget> para poder manipularlo como un Widget en el árbol de widgets
@@ -18,13 +16,11 @@ class SettingsController extends GetxController {
     if (user == null) {
       return;
     }
-
     final response = await client
         .from('users')
         .select('id_user')
         .eq('id_user', user.id)
         .single();
-
     // Datos para el QR
     final qrData = response['id_user'].toString();
 
