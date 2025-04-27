@@ -35,13 +35,19 @@ class LocationScreen extends StatelessWidget {
           ),
           Obx(() => MarkerLayer(
             markers: [
-              ...controller.markers,
+              // 1. Marcador de tu ubicación actual
               Marker(
                 point: controller.realTimePosition.value,
-                width: 40,
-                height: 40,
-                builder: (ctx) => const Icon(Icons.my_location, color: Colors.blue, size: 30),
+                width: 50,
+                height: 50,
+                builder: (ctx) => const Icon(
+                  Icons.my_location,
+                  color: Colors.blue,
+                  size: 40,
+                ),
               ),
+              // 2. Los otros marcadores que vienen de Supabase
+              ...controller.markers,
             ],
           )),
           Align(

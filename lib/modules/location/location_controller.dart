@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../../models/song_map.dart';
 
 class LocationController extends GetxController {
   late MapController mapController;
-
+  SupabaseClient client = Supabase.instance.client;
   final initialPosition = const LatLng(41.35934969449732, 2.076988185642747); // Mercadona
   final initialPosition2 = const LatLng(41.36098285791049, 2.079028340233199); // Gestoria
   final sarriaPosition = const LatLng(41.39493743803288, 2.1275733516533615); // Salesians de Sarria
@@ -19,92 +22,39 @@ class LocationController extends GetxController {
   void onInit() {
     super.onInit();
     mapController = MapController();
-    _addUserLocationMarker();
     _startLocationUpdates();
+    fetchMarkers();
   }
-  void _addUserLocationMarker() {
-    markers.add(
+  Future<void> fetchMarkers() async {
+    final response = await client.from('map_songs').select();
+    if (response.isEmpty) {
+      print('No hay marcadores en Supabase.');
+      return;
+    }
+    markers.clear();
+    print('Marcadores obtenidos de Supabase: $response');
+
+    for (final data in response) {
+      final markerModel = SongMap.fromJson(data);
+      markers.add(
         Marker(
-          point: initialPosition,
+          point: LatLng(markerModel.latitude, markerModel.longitude),
           width: 80,
           height: 80,
           builder: (ctx) => GestureDetector(
             onTap: () {
-                  _handleMarkerTap(ctx, initialPosition);
+              print('Clicaste en: ${markerModel.title}');
             },
-            child: const Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.location_on, color: Colors.red, size: 40),
-                SizedBox(height: 4),
-                Text(
-                  'Barcelona',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            child: const Icon(
+              Icons.location_on,
+              color: Colors.red,
+              size: 40,
             ),
           ),
         ),
-    );
-    markers.add(
-        Marker(
-          point: initialPosition2,
-          width: 80,
-          height: 80,
-          builder: (ctx) => GestureDetector(
-            onTap: () {
-              _handleMarkerTap(ctx, initialPosition2);
-            },
-            child: const Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.location_on, color: Colors.red, size: 40),
-                SizedBox(height: 4),
-                Text(
-                  'Barcelona2',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-    );
-    markers.add(
-      Marker(
-        point: sarriaPosition,
-        width: 80,
-        height: 80,
-        builder: (ctx) => GestureDetector(
-          onTap: () {
-            _handleMarkerTap(ctx, sarriaPosition
-            );
-          },
-          child: const Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.location_on, color: Colors.red, size: 40),
-              SizedBox(height: 4),
-              Text(
-                'Salesians Sarria',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+      );
+    }
+    markers.refresh();
   }
   // Función para iniciar la actualización de ubicación en tiempo real
   void _startLocationUpdates() async {
