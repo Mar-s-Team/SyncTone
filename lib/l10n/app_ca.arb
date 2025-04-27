@@ -55,6 +55,11 @@
     "profileEditorName": "El teu nom",
     "profileEditorUsername": "Nom d'usuari",
     "profileEditorLastName": "El teu cognom",
-    "profileEditorSave": "Desa els canvis"
+    "profileEditorSave": "Desa els canvis",
+
+    "changePasswordTitle": "Canviar contrasenya",
+    "newPasswordLabel": "Nova contrasenya",
+    "confirmNewPasswordLabel": "Confirma la nova contrasenya",
+    "changePasswordButton": "Canviar contrasenya"
 
 }

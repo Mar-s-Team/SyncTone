@@ -56,5 +56,10 @@
     "profileEditorName": "Tu nombre",
     "profileEditorUsername": "Tu nombre de usuario",
     "profileEditorLastName": "Tu apellido",
-    "profileEditorSave": "Guardar cambios"
+    "profileEditorSave": "Guardar cambios",
+
+    "changePasswordTitle": "Cambiar contraseña",
+    "newPasswordLabel": "Nueva contraseña",
+    "confirmNewPasswordLabel": "Confirmar nueva contraseña",
+    "changePasswordButton": "Cambiar contraseña"
 }
