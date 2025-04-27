@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
+import 'package:synctone/modules/qr_scanner/qr_scanner_binding.dart';
+import 'package:synctone/modules/qr_scanner/qr_scanner_screen.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'settings_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -151,6 +153,18 @@ class SettingsScreen extends GetView<SettingsController> {
             },
           ),
           _settingItem(Icons.lock, AppLocalizations.of(context)!.settingsChangePassword, onTap: () {}),
+              final scannedCode = await Get.to(() => const QRScannerScreen(), binding: QRScannerBinding());
+              if (scannedCode != null) {
+                debugPrint('Código escaneado: $scannedCode');
+              }
+            },
+          ),
+
+          _settingItem(
+            Icons.lock,
+            AppLocalizations.of(context)!.settingsChangePassword,
+            onTap: () => Get.toNamed(Routes.CHANGEPASSWORD),
+          ),
           const Divider(color: Colors.white24, height: 32),
           _settingItem(
             Icons.logout,
@@ -186,17 +200,23 @@ class SettingsScreen extends GetView<SettingsController> {
                 ),
               ),
               items: [
-                DropdownMenuItem(value: 'en', child: Text(AppLocalizations.of(context)!.settingsLanguageEng)),
                 DropdownMenuItem(value: 'es', child: Text(AppLocalizations.of(context)!.settingsLanguageEsp)),
+                DropdownMenuItem(value: 'en', child: Text(AppLocalizations.of(context)!.settingsLanguageEng)),
                 DropdownMenuItem(value: 'ca', child: Text(AppLocalizations.of(context)!.settingsLanguageCat)),
               ],
-              onChanged: (val) => Get.updateLocale(Locale(val!)),
+              onChanged: (val) {
+                if (val != null) {
+                  Get.updateLocale(Locale(val));
+                }
+              },
             ),
           ),
         ],
       ),
     );
   }
+
+
 
   Widget _quickAction(IconData icon, String label, VoidCallback onPressed) {
     return Column(

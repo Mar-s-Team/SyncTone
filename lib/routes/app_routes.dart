@@ -17,6 +17,8 @@ abstract class Routes {
   static const PLAYLISTS = _Paths.PLAYLISTS;
   static const SETTINGS = _Paths.SETTINGS;
   static const PROFILEEDITOR = _Paths.PROFILEEDITOR;
+  static const CHANGEPASSWORD = _Paths.CHANGEPASSWORD;
+  static const QRSCANNER = _Paths.QRSCANNER;
 }
 
 abstract class _Paths {
@@ -31,4 +33,6 @@ abstract class _Paths {
   static const PLAYLISTS = '/playlists';
   static const SETTINGS = '/settings';
   static const PROFILEEDITOR ='/profile_editor';
+  static const CHANGEPASSWORD = '/change-password';
+  static const QRSCANNER = '/qr-scanner';
 }

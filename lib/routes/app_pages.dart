@@ -22,6 +22,10 @@ import '../modules/profile_editor/profile_editor_binding.dart';
 import '../modules/profile_editor/profile_editor_screen.dart';
 import '../modules/register/register_binding.dart';
 import '../modules/register/register_screen.dart';
+import 'package:synctone/modules/change_password/change_password_binding.dart';
+import 'package:synctone/modules/change_password/change_password_screen.dart';
+import 'package:synctone/modules/qr_scanner/qr_scanner_screen.dart';
+import 'package:synctone/modules/qr_scanner/qr_scanner_binding.dart';
 part 'app_routes.dart';
 
 class AppPages {
@@ -79,6 +83,16 @@ class AppPages {
       name: _Paths.LOCATION,
       page: () => LocationScreen(),
       binding: LocationBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGEPASSWORD,
+      page: () => const ChangePasswordScreen(),
+      binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.QRSCANNER,
+      page: () => const QRScannerScreen(),
+      binding: QRScannerBinding(),
     ),
     GetPage(
       name: _Paths.PROFILEEDITOR,
