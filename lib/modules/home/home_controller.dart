@@ -1,21 +1,33 @@
 import 'package:get/get.dart';
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:synctone/api/api_endpoints.dart';
+import 'package:synctone/api/api_service.dart';
+import 'package:synctone/models/track.dart';
 
 class HomeController extends GetxController {
-  NotchBottomBarController bottomBarController = NotchBottomBarController();
-  var index = 0.obs;
-  void setIndex(i) => index.value = i;
+  var isLoading = false.obs;
+  SupabaseClient client = Supabase.instance.client;
+  RxList<Track> newReleases = List<Track>.empty().obs;
+  RxList<Track> trendingSpanish = List<Track>.empty().obs;
 
-  // RxList allPlayers = List<Player>.empty().obs;
-  // Profile? profile;
-  // SupabaseClient client = Supabase.instance.client;
-  //
-  // Future<Profile> getUserProfile() async{
-  //   List<dynamic> res = await client
-  //       .from("users")
-  //       .select()
-  //       .match({'id': client.auth.currentUser!.id});
-  //   Profile profileData = Profile.fromJson(res.first);
-  //   return profileData;
-  //}
+  @override
+  void onInit() async {
+    isLoading.value = true;
+    await getNewReleases();
+    await getTrendingSpanish();
+    isLoading.value = false;
+    super.onInit();
+  }
+
+  Future<void> getNewReleases() async {
+    List<Track>? newReleasesData = await ApiService.getCustomTracks(ApiEndpoints.newReleases);
+    newReleases(newReleasesData);
+    newReleases.refresh();
+  }
+
+  Future<void> getTrendingSpanish() async {
+    List<Track>? trendingSpanishData = await ApiService.getCustomTracks(ApiEndpoints.trendingSpanish);
+    trendingSpanish(trendingSpanishData);
+    trendingSpanish.refresh();
+  }
 }

@@ -1,9 +1,28 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:synctone/controllers/auth_controller.dart';
+import 'package:synctone/models/user_model.dart';
 
 class FriendsController extends GetxController {
+  AuthController authC = Get.find<AuthController>();
+
   SupabaseClient client = Supabase.instance.client;
+  UserModel? loggedUser;
+
+  List<UserModel> allFriends = [];
+  List<UserModel> topFriends = [];
+  List<UserModel> filteredFriends = [];
+
+  FriendsController(){
+    loadData();
+  }
+
+  void loadData()  {
+    getFriends();
+    getTopFriends();
+  }
+
   Future<void> showQRInputDialog(BuildContext context) async {
     TextEditingController qrController = TextEditingController();
     return showDialog<void>(
@@ -50,36 +69,38 @@ class FriendsController extends GetxController {
       },
     );
   }
-  Future<List<Map<String, dynamic>>> getFriends() async {
-    final user = client.auth.currentUser;
 
+  void getFriends() async {
     try {
       final response = await client.from('friendships')
-          .select('id_friend, users!id_friend(first_name, last_name, username, user_image)') // Relación con users
-          .eq('id_user', user!.id); // Amigos del usuario autentificado
+          .select('users!id_friend(*)') // Relación con users
+          .eq('id_user', client.auth.currentUser!.id); // Amigos del usuario autentificado
 
-      print(response);
-      return response;
+      allFriends = response.map((friendMap) {
+        final user = friendMap['users'] ?? {};
+          return UserModel.fromJson(user);
+        }).toList();
+      filteredFriends = allFriends;
+
     } catch (e) {
-      print("Error al enviar la invitación: $e");
+      print("Error al recuperar amigos: $e");
     }
-    return [];
   }
-  Future<List<Map<String, dynamic>>> getTopFriends() async {
-    final user = client.auth.currentUser;
 
+  void getTopFriends() async {
     try {
       final response = await client.from('friendships')
-          .select('id_friend, users!id_friend(username, user_image)') // Relación con users
-          .eq('id_user', user!.id) // Amigos del usuario autentificado
+          .select('users!id_friend(*)') // Relación con users
+          .eq('id_user',client.auth.currentUser!.id) // Amigos del usuario autentificado
           .order('compatibility', ascending: false)
           .limit(3);
-      //print(response);
-      return response;
+      topFriends = response.map((friendMap) {
+        final user = friendMap['users'] ?? {};
+        return UserModel.fromJson(user);
+      }).toList();
     } catch (e) {
       print("Error: $e");
     }
-    return [];
   }
 
 }

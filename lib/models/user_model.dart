@@ -17,24 +17,6 @@ class UserModel {
     this.spotifyAccount,
   });
 
-  UserModel.friendsRanking({
-    required this.idUser,
-    required this.username,
-    required this.userImage,
-  })  : createdAt = null,
-        spotifyAccount = null,
-        firstName = null,
-        lastName = null;
-
-  UserModel.friends({
-    required this.idUser,
-    required this.firstName,
-    required this.lastName,
-    required this.username,
-    required this.userImage,
-  })  : createdAt = null,
-        spotifyAccount = null;
-
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       idUser: json['id_user'] as String,

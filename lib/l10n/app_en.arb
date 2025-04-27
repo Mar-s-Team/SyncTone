@@ -23,10 +23,14 @@
     "registerUsername": "Username",
 
     "homeTitle": "SyncTone",
+    "homeSearchLabel": "Search",
+    "homeNewReleases": "New Releases",
+    "homeTrendingSpanish": "Trending in Spanish",
 
     "locationsTitle": "My SyncLocations",
 
     "playerTitle": "Currently playing",
+    "playerUpNext": "Up Next",
 
     "statsTitle": "My SyncStats",
 

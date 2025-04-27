@@ -30,7 +30,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeScreen(),
+      page: () => HomeScreen(),
       binding: HomeBinding(),
       title: 'SyncTone',
     ),
@@ -67,7 +67,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PLAYER,
-      page: () => const PlayerScreen(),
+      page: () => PlayerScreen(),
       binding: PlayerBinding(),
     ),
     GetPage(

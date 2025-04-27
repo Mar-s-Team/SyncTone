@@ -1,17 +1,26 @@
 class ArtistModel {
-  final String idArtist;
-  final String name;
-  final String? biography;
-  final String? profilePictureUrl;
+  String? idArtist;
+  String? name;
+  String? biography;
+  String? profilePictureUrl;
 
   ArtistModel({
-    required this.idArtist,
-    required this.name,
+    this.idArtist,
+    this.name,
     this.biography,
     this.profilePictureUrl,
   });
 
-  factory ArtistModel.fromJson(Map<String, dynamic> json) {
+  static ArtistModel fromJson(dynamic json){
+    return ArtistModel(
+      idArtist: json['id_artist'],
+      name: json['name'],
+      biography: json['biography'],
+      profilePictureUrl: json['profile_picture_url'],
+    );
+  }
+
+  factory ArtistModel.fromMap(Map<String, dynamic> json) {
     return ArtistModel(
       idArtist: json['id_artist'] as String,
       name: json['name'] as String,

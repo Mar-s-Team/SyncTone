@@ -113,7 +113,6 @@ class LoginScreen extends GetView<LoginController> {
                           bool? isLogin = await controller.login();
                           if (isLogin != null && isLogin == true) {
                             Get.offAllNamed(Routes.MAIN);
-                            authC.loadUser();
                           }
                         }
                       },
