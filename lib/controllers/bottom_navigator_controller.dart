@@ -7,13 +7,13 @@ import 'package:synctone/modules/playlists/playlists_screen.dart';
 import 'package:synctone/modules/stats/stats_screen.dart';
 
 class BottomNavigatorController extends GetxController {
-  var screens = const [
+  var screens = [
     HomeScreen(),
-    LocationScreen(),
-    PlayerScreen(),
-    StatsScreen(),
-    FriendsScreen(),
-    PlaylistsScreen(),
+    const LocationScreen(),
+    const PlayerScreen(),
+    const StatsScreen(),
+    const FriendsScreen(),
+    const PlaylistsScreen(),
   ];
   var index = 0.obs;
 

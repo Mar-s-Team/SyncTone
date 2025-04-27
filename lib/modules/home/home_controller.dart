@@ -1,13 +1,8 @@
 import 'package:get/get.dart';
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:synctone/models/song_model.dart';
 
 class HomeController extends GetxController {
-  NotchBottomBarController bottomBarController = NotchBottomBarController();
-  var index = 0.obs;
-  void setIndex(i) => index.value = i;
-
   var isLoading = false.obs;
   SupabaseClient client = Supabase.instance.client;
   RxList<SongModel> newReleases = List<SongModel>.empty().obs;

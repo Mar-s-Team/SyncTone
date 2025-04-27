@@ -10,18 +10,6 @@ class FriendsController extends GetxController {
   SupabaseClient client = Supabase.instance.client;
   UserModel? loggedUser;
 
-  List<UserModel> allFriends = [];
-  List<UserModel> topFriends = [];
-  List<UserModel> filteredFriends = [];
-
-  FriendsController(){
-    loadData();
-  }
-
-  void loadData()  {
-    getFriends();
-    getTopFriends();
-  }
 
   Future<void> showQRInputDialog(BuildContext context) async {
     TextEditingController qrController = TextEditingController();
@@ -70,36 +58,30 @@ class FriendsController extends GetxController {
     );
   }
 
-  void getFriends() async {
+  Future<List<Map<String, dynamic>>> getFriends() async {
     try {
       final response = await client.from('friendships')
           .select('users!id_friend(*)') // Relación con users
           .eq('id_user', client.auth.currentUser!.id); // Amigos del usuario autentificado
-
-      allFriends = response.map((friendMap) {
-        final user = friendMap['users'] ?? {};
-          return UserModel.fromJson(user);
-        }).toList();
-      filteredFriends = allFriends;
+      return response;
 
     } catch (e) {
       print("Error al recuperar amigos: $e");
+      return [];
     }
   }
 
-  void getTopFriends() async {
+  Future<List<Map<String, dynamic>>> getTopFriends() async {
     try {
       final response = await client.from('friendships')
           .select('users!id_friend(*)') // Relación con users
           .eq('id_user',client.auth.currentUser!.id) // Amigos del usuario autentificado
           .order('compatibility', ascending: false)
           .limit(3);
-      topFriends = response.map((friendMap) {
-        final user = friendMap['users'] ?? {};
-        return UserModel.fromJson(user);
-      }).toList();
+      return response;
     } catch (e) {
       print("Error: $e");
+      return [];
     }
   }
 
