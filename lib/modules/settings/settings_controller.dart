@@ -10,7 +10,28 @@ import '../../controllers/auth_controller.dart';
 class SettingsController extends GetxController {
   // Usamos Rx<Widget> para poder manipularlo como un Widget en el árbol de widgets
   Rx<Widget> qrCodeWidget = Rx<Widget>(Container()); // Iniciamos con un widget vacío (Container)
-  var userImage = Rx<String?>(null);
+  var userImage = ''.obs;
+  @override
+  void onInit() {
+    super.onInit();
+    fetchUserImage(); // Al iniciar el controlador, trae la imagen
+  }
+  Future<void> fetchUserImage() async {
+    final supabase = Supabase.instance.client;
+    final userId = supabase.auth.currentUser?.id;
+
+    if (userId != null) {
+      final response = await supabase
+          .from('users')
+          .select('user_image')
+          .eq('id_user', userId)
+          .maybeSingle(); // maybeSingle evita errores si no encuentra nada
+
+      if (response != null && response['user_image'] != null) {
+        userImage.value = response['user_image'] as String;
+      }
+    }
+  }
 
   // Este método obtiene los datos de Supabase y genera el código QR
   Future<void> generateQR() async {
@@ -49,21 +70,31 @@ class SettingsController extends GetxController {
     final XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
+      // Llama a la función para subir la imagen
+      await _uploadImage(File(pickedFile.path));  // Subir la imagen seleccionada
+    }
+
+    if (pickedFile != null) {
       // Llama al método para subir la imagen y actualizar la URL
       _uploadImage(File(pickedFile.path));
     }
   }
+  void updateUserImage(String newImageUrl) {
+    userImage.value = newImageUrl; // Actualiza el valor
+  }
   Future<void> _uploadImage(File image) async {
     final supabase = Supabase.instance.client;
-    final fileName = 'avatars/${DateTime.now().millisecondsSinceEpoch}.png'; // Nombre único para la imagen
-    final storage = supabase.storage.from('user-images'); // Asumiendo que tienes un bucket llamado 'avatars'
+    final fileName = '${DateTime.now().millisecondsSinceEpoch}.png'; // Nombre único para la imagen
+    final storage = supabase.storage.from('user-images'); // Asumiendo que tienes un bucket llamado 'user-images'
 
     try {
       // Subir el archivo
-      final response = await storage.upload(fileName, image);
+      final bytes = await image.readAsBytes();
+      final response = await storage.uploadBinary(fileName, bytes);
       print('Respuesta: $response');
       final imageUrl = storage.getPublicUrl(fileName);
       print('URL de la imagen: $imageUrl');
+
       await _updateProfileImageUrl(imageUrl);
         } catch (e) {
       print('Error al subir la imagen: $e');
@@ -75,17 +106,17 @@ class SettingsController extends GetxController {
     final authC = Get.find<AuthController>();
 
     if (userId != null) {
-      final response = await supabase.from('users').update({
-        'user_image': imageUrl,
-      }).eq('id_user', userId);
+      try {
+        final response = await supabase
+            .from('users')
+            .update({'user_image': imageUrl})
+            .eq('id_user', userId);
 
-      if (response.error == null) {
-        print('Imagen actualizada correctamente');
+        print('Respuesta al actualizar imagen: $response');
 
-        // Actualizamos la URL de la imagen en el observable
-        authC.loggedUser?.userImage = imageUrl;  // Aquí actualizamos el valor
-      } else {
-        print('Error al actualizar la imagen: ${response.error?.message}');
+        authC.loggedUser?.userImage = imageUrl;
+      } catch (e) {
+        print('Error al actualizar la imagen: $e');
       }
     }
   }
