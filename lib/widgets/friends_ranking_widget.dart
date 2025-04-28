@@ -17,7 +17,7 @@ class FriendsRanking extends StatelessWidget {
       return Column(
         children: [
           CircleAvatar(
-            radius: rank == 1 ? 50 : rank == 2 ? 40 : 30,
+            radius: rank == 1 ? 50 : rank == 2 ? 40 : 40,
             backgroundImage: NetworkImage(friend.userImage),
           ),
           const SizedBox(height: 4),

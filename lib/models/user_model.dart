@@ -5,7 +5,7 @@ class UserModel {
   final String username;
   final DateTime? createdAt;
   final String? spotifyAccount;
-  final String userImage;
+  late final String userImage;
 
   UserModel({
     required this.idUser,

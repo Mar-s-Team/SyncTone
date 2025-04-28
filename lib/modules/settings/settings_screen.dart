@@ -30,22 +30,27 @@ class SettingsScreen extends GetView<SettingsController> {
               Center(
                 child: Column(
                   children: [
-                    const Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 45,
-                          backgroundImage: AssetImage('assets/avatar_placeholder.png'),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: CircleAvatar(
-                            radius: 14,
-                            backgroundColor: Colors.purple,
-                            child: Icon(Icons.edit, size: 16, color: Colors.white),
+                    GestureDetector(
+                      onTap: controller.pickImage, // Método para seleccionar la imagen
+                      child: Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 45,
+                            backgroundImage: authC.loggedUser?.userImage != null
+                                ? NetworkImage(authC.loggedUser?.userImage ?? '')
+                                : const AssetImage('assets/avatar_placeholder.png') as ImageProvider,
                           ),
-                        ),
-                      ],
+                          const Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: CircleAvatar(
+                              radius: 14,
+                              backgroundColor: Colors.purple,
+                              child: Icon(Icons.edit, size: 16, color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Text(
@@ -152,6 +157,7 @@ class SettingsScreen extends GetView<SettingsController> {
               );
             },
           ),
+          /*
           _settingItem(Icons.lock, AppLocalizations.of(context)!.settingsChangePassword, onTap: () {}),
               final scannedCode = await Get.to(() => const QRScannerScreen(), binding: QRScannerBinding());
               if (scannedCode != null) {
@@ -159,7 +165,7 @@ class SettingsScreen extends GetView<SettingsController> {
               }
             },
           ),
-
+*/
           _settingItem(
             Icons.lock,
             AppLocalizations.of(context)!.settingsChangePassword,
@@ -176,7 +182,6 @@ class SettingsScreen extends GetView<SettingsController> {
       ),
     );
   }
-
   Widget _languageSelector(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),

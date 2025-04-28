@@ -89,11 +89,13 @@ class AppPages {
       page: () => const ChangePasswordScreen(),
       binding: ChangePasswordBinding(),
     ),
+    /*
     GetPage(
       name: _Paths.QRSCANNER,
       page: () => const QRScannerScreen(),
       binding: QRScannerBinding(),
     ),
+     */
     GetPage(
       name: _Paths.PROFILEEDITOR,
       page: () => EditProfileScreen(),

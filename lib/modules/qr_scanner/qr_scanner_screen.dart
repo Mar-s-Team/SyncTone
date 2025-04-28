@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:get/get.dart';
 import 'qr_scanner_controller.dart';
@@ -30,3 +30,4 @@ class QRScannerScreen extends GetView<QRScannerController> {
     );
   }
 }
+*/

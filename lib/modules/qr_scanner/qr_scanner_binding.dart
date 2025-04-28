@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+/*import 'package:get/get.dart';
 import 'qr_scanner_controller.dart';
 
 class QRScannerBinding extends Bindings {
@@ -7,3 +7,4 @@ class QRScannerBinding extends Bindings {
     Get.lazyPut<QRScannerController>(() => QRScannerController());
   }
 }
+*/
