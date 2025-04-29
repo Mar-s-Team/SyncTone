@@ -38,7 +38,7 @@ class SettingsScreen extends GetView<SettingsController> {
                             radius: 45,
                             backgroundImage: NetworkImage(
                               (authC.loggedUser?.userImage?.isNotEmpty ?? false)
-                                  ? authC.loggedUser!.userImage
+                                  ? authC.loggedUser!.userImage as String
                                   : 'https://cdn-icons-png.freepik.com/512/8211/8211048.png',
                             ),
                           ),
