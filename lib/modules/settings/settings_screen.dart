@@ -81,9 +81,96 @@ class SettingsScreen extends GetView<SettingsController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _quickAction(Icons.music_note, "Spotify", () {}),
-          _quickAction(Icons.notifications, AppLocalizations.of(context)!.settingsNotifications, () {}),
-          _quickAction(Icons.help_outline, AppLocalizations.of(context)!.settingsContact, () {}),
+          _quickAction(
+            Icons.music_note,
+            "Spotify",
+                () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  backgroundColor: const Color(0xFF1C1C1C),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  title: const Text(
+                    "Spotify",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  content: Text(
+                    AppLocalizations.of(context)!.comingSoonMessage,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('Cerrar', style: TextStyle(color: Colors.purple)),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+          _quickAction(
+            Icons.notifications,
+            AppLocalizations.of(context)!.settingsNotifications,
+                () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  backgroundColor: const Color(0xFF1C1C1C),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  title: Text(
+                    AppLocalizations.of(context)!.settingsNotifications,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  content: Text(
+                    AppLocalizations.of(context)!.comingSoonMessage,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('Cerrar', style: TextStyle(color: Colors.purple)),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+
+          _quickAction(
+            Icons.help_outline,
+            AppLocalizations.of(context)!.settingsContact,
+                () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  backgroundColor: const Color(0xFF1C1C1C),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  title: Text(
+                    AppLocalizations.of(context)!.settingsContact,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+
+                  content: Text(
+                    AppLocalizations.of(context)!.settingsContactDialog,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('Cerrar', style: TextStyle(color: Colors.purple)),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+
         ],
       ),
     );
