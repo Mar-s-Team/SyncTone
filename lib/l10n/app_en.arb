@@ -46,6 +46,8 @@
     "cancelScanning": "Cancel",
 
     "favouritesTitle": "My SyncFavourites",
+    "favouritesNotYet": "No favourite songs yet",
+    "saveToFavourites": "Save to favourites",
 
     "settingsTitle": "Settings",
     "settingsLanguage": "Language",

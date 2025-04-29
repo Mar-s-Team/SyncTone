@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/modules/player/bloc/song_player_cubit.dart';
 import 'package:synctone/modules/player/bloc/song_player_state.dart';
 import 'package:synctone/modules/player/player_controller.dart';
@@ -19,6 +20,7 @@ class PlayerScreen extends StatefulWidget {
 
 class _PlayerScreenState extends State<PlayerScreen> {
   MainController controller = Get.find();
+  AuthController authC = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +40,26 @@ class _PlayerScreenState extends State<PlayerScreen> {
                   ),
                   child: Column(
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Tooltip(
+                            message: AppLocalizations.of(context)!.saveToFavourites,
+                            triggerMode: TooltipTriggerMode.tap,
+                            child: IconButton(
+                              onPressed: () {
+                                Get.find<PlayerController>().addToFavouritesList(controller.currentSong.value);
+                              },
+                              icon: const Icon(
+                                Icons.favorite,
+                                color: Colors.yellow,
+                                size: 33,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
                       NowPlayingImage(song: controller.currentSong.value),
                       _songPlayer()
                     ],
@@ -63,6 +85,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                  min: 0.0,
                  max: context.read<SongPlayerCubit>().songDuration.inSeconds.toDouble(),
                  onChanged: (value) {},
+                 activeColor: const Color(0xFF8400C4),
                ),
                const SizedBox(height: 20,),
                Row(
@@ -71,37 +94,36 @@ class _PlayerScreenState extends State<PlayerScreen> {
                    Text(
                       formatDuration(
                         context.read<SongPlayerCubit>().songPosition
-                      )
+                      ),
+                     style: const TextStyle(color: Colors.white),
                    ),
                     GestureDetector(
                       onTap: (){
                         context.read<SongPlayerCubit>().playOrPauseSong();
-
                       },
                       child: Container(
                         height: 45,
                         width: 45,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.purple
+                            color: Color(0xFF8400C4)
                         ),
                         child: Icon(
                             context.read<SongPlayerCubit>().audioPlayer.playing
                                 ? Icons.pause
-                                : Icons.play_arrow
+                                : Icons.play_arrow,
+                          color: Colors.white,
                         ),
                       ),
                     ),
                     Text(
                        formatDuration(
                            context.read<SongPlayerCubit>().songDuration
-                       )
+                       ),
+                      style: const TextStyle(color: Colors.white),
                    ),
                  ],
                ),
-               const SizedBox(height: 20),
-
-
              ],
            );
          }

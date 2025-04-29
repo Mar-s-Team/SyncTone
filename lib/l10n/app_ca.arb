@@ -47,6 +47,8 @@
 
 
     "favouritesTitle": "Les meves SyncsPreferides",
+    "favouritesNotYet": "Sense cançons preferides encara",
+    "saveToFavourites": "Guarda a preferides",
 
     "settingsTitle": "Configuració",
     "settingsLanguage": "Idioma",
