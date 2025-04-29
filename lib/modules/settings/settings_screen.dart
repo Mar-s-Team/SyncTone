@@ -36,9 +36,11 @@ class SettingsScreen extends GetView<SettingsController> {
                         children: [
                           CircleAvatar(
                             radius: 45,
-                            backgroundImage: authC.loggedUser?.userImage != null
-                                ? NetworkImage(authC.loggedUser?.userImage ?? '')
-                                : const AssetImage('assets/avatar_placeholder.png') as ImageProvider,
+                            backgroundImage: NetworkImage(
+                              (authC.loggedUser?.userImage?.isNotEmpty ?? false)
+                                  ? authC.loggedUser!.userImage
+                                  : 'https://cdn-icons-png.freepik.com/512/8211/8211048.png',
+                            ),
                           ),
                           const Positioned(
                             bottom: 0,

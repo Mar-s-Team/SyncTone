@@ -11,12 +11,10 @@ import 'package:synctone/modules/main/main_binding.dart';
 import 'package:synctone/modules/main/main_view.dart';
 import 'package:synctone/modules/player/player_binding.dart';
 import 'package:synctone/modules/player/player_screen.dart';
-import 'package:synctone/modules/playlists/playlists_binding.dart';
-import 'package:synctone/modules/playlists/playlists_screen.dart';
+import 'package:synctone/modules/favourites/favourites_binding.dart';
+import 'package:synctone/modules/favourites/favourites_screen.dart';
 import 'package:synctone/modules/settings/settings_binding.dart';
 import 'package:synctone/modules/settings/settings_screen.dart';
-import 'package:synctone/modules/stats/stats_binding.dart';
-import 'package:synctone/modules/stats/stats_screen.dart';
 import '../modules/friends/friends_screen.dart';
 import '../modules/profile_editor/profile_editor_binding.dart';
 import '../modules/profile_editor/profile_editor_screen.dart';
@@ -67,19 +65,14 @@ class AppPages {
       binding: SettingsBinding(),
     ),
     GetPage(
-      name: _Paths.PLAYLISTS,
-      page: () => const PlaylistsScreen(),
-      binding: PlaylistsBinding(),
+      name: _Paths.FAVOURITES,
+      page: () => const FavouritesScreen(),
+      binding: FavouritesBinding(),
     ),
     GetPage(
       name: _Paths.PLAYER,
       page: () => PlayerScreen(),
       binding: PlayerBinding(),
-    ),
-    GetPage(
-      name: _Paths.STATS,
-      page: () => const StatsScreen(),
-      binding: StatsBinding(),
     ),
     GetPage(
       name: _Paths.LOCATION,

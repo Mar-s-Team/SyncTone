@@ -50,16 +50,12 @@ class MainScreen extends StatelessWidget{
                     label: 'Player'
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.query_stats),
-                    label: 'Stats'
-                ),
-                BottomNavigationBarItem(
                     icon: Icon(Icons.people_alt_rounded),
                     label: 'Friends'
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.queue_music),
-                    label: 'Playlists'
+                    icon: Icon(Icons.favorite),
+                    label: 'Favourites'
                 ),
               ],
 
