@@ -38,8 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Text(
               "Powered by Mar's Team",
               style: TextStyle(
-                color: Colors.white.withOpacity(0.4),
-                fontSize: 12,
+                color: Colors.white.withOpacity(0.6),
+                fontSize: 15,
                 fontStyle: FontStyle.italic,
               ),
             ),
