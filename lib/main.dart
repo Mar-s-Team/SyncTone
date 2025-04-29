@@ -24,9 +24,10 @@ void main() async{
   runApp(
     GetMaterialApp(
       title: 'SyncTone',
-      initialRoute: supaProvider.client.auth.currentUser == null
+      initialRoute: Routes.SPLASH,
+      /*initialRoute: supaProvider.client.auth.currentUser == null
           ? Routes.LOGIN
-          : Routes.MAIN,
+          : Routes.MAIN,*/
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

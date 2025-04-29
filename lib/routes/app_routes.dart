@@ -19,6 +19,7 @@ abstract class Routes {
   static const PROFILEEDITOR = _Paths.PROFILEEDITOR;
   static const CHANGEPASSWORD = _Paths.CHANGEPASSWORD;
   static const QRSCANNER = _Paths.QRSCANNER;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const PROFILEEDITOR ='/profile_editor';
   static const CHANGEPASSWORD = '/change-password';
   static const QRSCANNER = '/qr-scanner';
+  static const SPLASH = '/splash';
 }
