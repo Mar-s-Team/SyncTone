@@ -22,7 +22,7 @@ class SongListView extends StatelessWidget {
       itemBuilder: (_, index) => GestureDetector(
         onTap: (){
           authC.currentSong = songs[index];
-          controller.setIndex(2);
+          controller.playSong(songs[index]);
         },
         child: SongItem(song: songs[index],),
       ),
