@@ -38,6 +38,7 @@
     "topFriends": "Top SyncFriends",
     "myFriends": "My SyncFriends",
     "noFriends": "No friends found",
+    "noTopFriends": "No friends yet",
     "cancelScanning": "Cancel",
 
     "playlistsTitle": "My SyncPlaylists",
