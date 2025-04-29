@@ -5,7 +5,6 @@ import 'package:synctone/widgets/settings_menu_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/user_model.dart';
 import '../../widgets/friends_ranking_widget.dart';
-import '../settings/qr_code_scanner.dart';
 import '../friends/friends_controller.dart';
 import 'package:synctone/widgets/friend_card_widget.dart';
 import 'package:synctone/widgets/friend_search_widget.dart';

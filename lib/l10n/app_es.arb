@@ -79,7 +79,7 @@
     "changePasswordSuccessTitle": "Éxito",
     "changePasswordSuccessMessage": "Contraseña cambiada correctamente",
     "changePasswordErrorTitle": "Error",
-    "changePasswordDialogOk": "Aceptar"
+    "changePasswordDialogOk": "Aceptar",
 
-
+    "closeDialog": "Cerrar"
 }

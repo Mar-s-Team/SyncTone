@@ -80,6 +80,7 @@
     "changePasswordSuccessTitle": "Èxit",
     "changePasswordSuccessMessage": "Contrasenya canviada correctament",
     "changePasswordErrorTitle": "Error",
-    "changePasswordDialogOk": "D'acord"
+    "changePasswordDialogOk": "D'acord",
 
+    "closeDialog": "Tancar"
 }

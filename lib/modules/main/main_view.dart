@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 
-import '../player/player_controller.dart';
 
 class MainScreen extends StatelessWidget{
    MainScreen({super.key});

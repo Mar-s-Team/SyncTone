@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:synctone/modules/player/bloc/song_player_cubit.dart';
 import 'package:synctone/modules/player/bloc/song_player_state.dart';
-import 'package:synctone/modules/player/player_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:synctone/widgets/now_playing_image.dart';
 import 'package:synctone/widgets/settings_menu_widget.dart';
@@ -63,6 +62,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                  min: 0.0,
                  max: context.read<SongPlayerCubit>().songDuration.inSeconds.toDouble(),
                  onChanged: (value) {},
+                 activeColor: const Color(0xFF8400C4) ,
                ),
                const SizedBox(height: 20,),
                Row(
@@ -71,7 +71,8 @@ class _PlayerScreenState extends State<PlayerScreen> {
                    Text(
                       formatDuration(
                         context.read<SongPlayerCubit>().songPosition
-                      )
+                      ),
+                     style: const TextStyle(color: Colors.white),
                    ),
                     GestureDetector(
                       onTap: (){
@@ -83,19 +84,21 @@ class _PlayerScreenState extends State<PlayerScreen> {
                         width: 45,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.purple
+                            color: Color(0xFF8400C4)
                         ),
                         child: Icon(
                             context.read<SongPlayerCubit>().audioPlayer.playing
                                 ? Icons.pause
-                                : Icons.play_arrow
+                                : Icons.play_arrow,
+                          color: Colors.white,
                         ),
                       ),
                     ),
                     Text(
                        formatDuration(
                            context.read<SongPlayerCubit>().songDuration
-                       )
+                       ),
+                      style: const TextStyle(color: Colors.white),
                    ),
                  ],
                ),

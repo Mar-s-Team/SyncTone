@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
-import 'package:synctone/routes/app_pages.dart';
 
 class ProfileEditorController extends GetxController {
   BottomNavigatorController navC = Get.find<BottomNavigatorController>();
@@ -52,7 +51,6 @@ class ProfileEditorController extends GetxController {
   Future<void> loadUserData() async {
     final user = client.auth.currentUser;
     if (user == null) return;
-    else{print("HOLA");}
 
     final data = await client
         .from('users')
@@ -64,7 +62,6 @@ class ProfileEditorController extends GetxController {
     lastNameController.text        = data['last_name'] ?? '';
     usernameController.text        = data['username'] ?? '';
   }
-  // DEBUG
 
   Future<void> loadGenres() async {
     try {

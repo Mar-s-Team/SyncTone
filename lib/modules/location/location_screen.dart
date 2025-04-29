@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
-import 'package:latlong2/latlong.dart';
 import '../../widgets/settings_menu_widget.dart';
 import 'location_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

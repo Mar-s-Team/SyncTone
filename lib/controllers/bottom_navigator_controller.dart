@@ -3,7 +3,6 @@ import 'package:synctone/api/api_service.dart';
 import 'package:synctone/models/track.dart';
 import 'package:synctone/modules/friends/friends_screen.dart';
 import 'package:synctone/modules/home/home_screen.dart';
-import 'package:synctone/modules/location/location_controller.dart';
 import 'package:synctone/modules/location/location_screen.dart';
 import 'package:synctone/modules/player/player_controller.dart';
 import 'package:synctone/modules/player/player_screen.dart';

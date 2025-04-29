@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:synctone/models/user_model.dart';
-import 'package:synctone/routes/app_pages.dart';
 
 import '../controllers/auth_controller.dart';
 

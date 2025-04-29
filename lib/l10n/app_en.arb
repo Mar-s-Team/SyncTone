@@ -79,6 +79,8 @@
     "changePasswordSuccessTitle": "Success",
     "changePasswordSuccessMessage": "Password changed successfully",
     "changePasswordErrorTitle": "Error",
-    "changePasswordDialogOk": "OK"
+    "changePasswordDialogOk": "OK",
+
+    "closeDialog": "Close"
 
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
-import 'package:synctone/modules/qr_scanner/qr_scanner_binding.dart';
-import 'package:synctone/modules/qr_scanner/qr_scanner_screen.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'settings_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -105,7 +103,10 @@ class SettingsScreen extends GetView<SettingsController> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Cerrar', style: TextStyle(color: Colors.purple)),
+                      child: Text(
+                        AppLocalizations.of(context)!.closeDialog,
+                        style: const TextStyle(color: Colors.purple),
+                      ),
                     ),
                   ],
                 ),
@@ -134,7 +135,10 @@ class SettingsScreen extends GetView<SettingsController> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Cerrar', style: TextStyle(color: Colors.purple)),
+                      child: Text(
+                        AppLocalizations.of(context)!.closeDialog,
+                        style: const TextStyle(color: Colors.purple),
+                      ),
                     ),
                   ],
                 ),
@@ -165,7 +169,10 @@ class SettingsScreen extends GetView<SettingsController> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Cerrar', style: TextStyle(color: Colors.purple)),
+                      child: Text(
+                        AppLocalizations.of(context)!.closeDialog,
+                        style: const TextStyle(color: Colors.purple),
+                      ),
                     ),
                   ],
                 ),

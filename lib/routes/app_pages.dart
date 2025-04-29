@@ -23,8 +23,6 @@ import '../modules/register/register_screen.dart';
 import 'package:synctone/modules/change_password/change_password_binding.dart';
 import 'package:synctone/modules/change_password/change_password_screen.dart';
 import 'package:synctone/modules/splash/splash_screen.dart';
-import 'package:synctone/modules/qr_scanner/qr_scanner_screen.dart';
-import 'package:synctone/modules/qr_scanner/qr_scanner_binding.dart';
 part 'app_routes.dart';
 
 
