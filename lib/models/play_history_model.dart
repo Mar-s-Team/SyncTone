@@ -1,35 +1,36 @@
-class PlayHistoryModel {
-  final String idPlayHistory;
+class FavouriteModel {
+  final String idFavourite;
   final String idUser;
   final String idSong;
-  final DateTime playDate;
-  final int durationPlayed;
+  final DateTime addedDate;
 
-  PlayHistoryModel({
-    required this.idPlayHistory,
+  FavouriteModel({
+    required this.idFavourite,
     required this.idUser,
     required this.idSong,
-    required this.playDate,
-    required this.durationPlayed,
+    required this.addedDate,
   });
 
-  factory PlayHistoryModel.fromJson(Map<String, dynamic> json) {
-    return PlayHistoryModel(
-      idPlayHistory: json['id_play_history'] as String,
+  static FavouriteModel fromJson(Map<String, dynamic> json) {
+    return FavouriteModel(
+      idFavourite: json['id_favourite'] as String,
       idUser: json['id_user'] as String,
       idSong: json['id_song'] as String,
-      playDate: DateTime.parse(json['play_date'] as String),
-      durationPlayed: json['duration_played'] as int,
+      addedDate: DateTime.parse(json['added_date'] as String),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id_play_history': idPlayHistory,
+      'id_favourite': idFavourite,
       'id_user': idUser,
       'id_song': idSong,
-      'play_date': playDate.toIso8601String(),
-      'duration_played': durationPlayed,
+      'added_date': addedDate.toIso8601String(),
     };
+  }
+
+  static List<FavouriteModel> fromJsonList(List? data) {
+    if (data == null || data.isEmpty) return [];
+    return data.map((e) => fromJson(e)).toList();
   }
 }

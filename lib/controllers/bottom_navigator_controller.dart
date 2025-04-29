@@ -15,7 +15,7 @@ class BottomNavigatorController extends GetxController {
     LocationScreen(),
     PlayerScreen(),
     const FriendsScreen(),
-    const FavouritesScreen(),
+    FavouritesScreen(),
   ];
   var index = 0.obs;
 
