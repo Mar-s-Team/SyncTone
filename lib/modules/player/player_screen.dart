@@ -8,6 +8,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:synctone/widgets/now_playing_image.dart';
 import 'package:synctone/widgets/settings_menu_widget.dart';
 
+import '../main/main_controller.dart';
+
 class PlayerScreen extends StatefulWidget {
   PlayerScreen({super.key});
 
@@ -16,7 +18,7 @@ class PlayerScreen extends StatefulWidget {
 }
 
 class _PlayerScreenState extends State<PlayerScreen> {
-  PlayerController controller = Get.find();
+  MainController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,23 +26,26 @@ class _PlayerScreenState extends State<PlayerScreen> {
           title: Text(AppLocalizations.of(context)!.playerTitle),
           leading: const SettingsMenuWidget(),
         ),
-        body: BlocProvider(
-          create: (_) => SongPlayerCubit()..loadSong(controller.currentSong!.audioUrl),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 20,
-              ),
-              child: Column(
-                children: [
-                  NowPlayingImage(song: controller.currentSong!),
-                  _songPlayer()
-                ],
-              ),
-            ),
-         )
-        )
+        body: Obx(() {
+          return BlocProvider(
+              key: ValueKey(controller.currentSong.value),
+              create: (_) => SongPlayerCubit()..loadSong(controller.currentSong.value.audioUrl),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                  child: Column(
+                    children: [
+                      NowPlayingImage(song: controller.currentSong.value),
+                      _songPlayer()
+                    ],
+                  ),
+                ),
+              )
+          );
+        })
     );
   }
 

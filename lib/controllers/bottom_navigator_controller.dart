@@ -30,9 +30,9 @@ class BottomNavigatorController extends GetxController {
   }
 
     void playSong(Track? track){
-      index.value = 2;
       Get.put(PlayerController(track));
       PlayerScreen();
+      index.value = 2;
     }
 
 }

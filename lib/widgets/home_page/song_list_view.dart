@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 import 'package:synctone/models/track.dart';
-import 'package:synctone/routes/app_pages.dart';
 import 'package:synctone/widgets/home_page/song_item.dart';
+import '../../modules/main/main_controller.dart';
 
 class SongListView extends StatelessWidget {
   final RxList<Track> songs;
-  final AuthController authC = Get.find();
+  final MainController mainC = Get.find<MainController>();
   final BottomNavigatorController controller = Get.find();
   SongListView({super.key, required this.songs});
 
@@ -21,8 +20,8 @@ class SongListView extends StatelessWidget {
       separatorBuilder: (_, __) => const SizedBox(width: 24),
       itemBuilder: (_, index) => GestureDetector(
         onTap: (){
-          authC.currentSong = songs[index];
-          controller.setIndex(2);
+          mainC.currentSong.value = songs[index];
+          controller.playSong(songs[index]);
         },
         child: SongItem(song: songs[index],),
       ),

@@ -7,7 +7,7 @@ import '../player/player_controller.dart';
 
 class MainScreen extends StatelessWidget{
    MainScreen({super.key});
-   final PlayerController playerController = Get.put(PlayerController(null));
+   //final PlayerController playerController = Get.put(PlayerController(null));
    final BottomNavigatorController controller = Get.put(BottomNavigatorController());
    final AuthController authC = Get.find<AuthController>();
 

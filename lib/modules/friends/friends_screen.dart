@@ -19,11 +19,36 @@ class FriendsScreen extends StatefulWidget {
 
 class _FriendsScreenState extends State<FriendsScreen> {
   FriendsController controller = FriendsController();
+  List<UserModel> topFriends = [];
+  List<UserModel> allFriends = [];
+  List<UserModel> filteredFriends = [];
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getTopFriends().then((data) {
+      setState(() {
+        topFriends = data.map((friendMap) {
+          final user = friendMap['users'] ?? {};
+          return UserModel.fromJson(user);
+        }).toList();
+      });
+    });
+
+    controller.getFriends().then((data) {
+      setState(() {
+        allFriends = data.map((friendMap) {
+          final user = friendMap['users'] ?? {};
+          return UserModel.fromJson(user);
+        }).toList();
+        filteredFriends = allFriends;
+      });
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
-    controller.loadData();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.friendsTitle),
@@ -37,10 +62,10 @@ class _FriendsScreenState extends State<FriendsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FriendSearchBar(
-                  allFriends: controller.allFriends,
+                  allFriends: allFriends,
                   onSearch: (results) {
                     setState(() {
-                      controller.filteredFriends = results;
+                      filteredFriends = results;
                     });
                   },
                 ),
@@ -49,27 +74,32 @@ class _FriendsScreenState extends State<FriendsScreen> {
                 const SizedBox(height: 10),
                 SizedBox(
                   height: 190,
-                  child: controller.topFriends.isEmpty
-                      ? const Center(child: CircularProgressIndicator())
+                  child: topFriends.isEmpty
+                      ? const Center(
+                    child: Text(
+                      "No friends yet",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
                       : Stack(
                     alignment: Alignment.topCenter,
                     children: [
-                      if (controller.topFriends.length > 1)
+                      if (topFriends.length > 1)
                         Positioned(
                           left: 50,
                           top: 50,
-                          child: FriendsRanking(rank: 2, friend: controller.topFriends[1]),
+                          child: FriendsRanking(rank: 2, friend: topFriends[1]),
                         ),
-                      if (controller.topFriends.isNotEmpty)
+                      if (topFriends.isNotEmpty)
                         Positioned(
                           top: 0,
-                          child: FriendsRanking(rank: 1, friend: controller.topFriends[0]),
+                          child: FriendsRanking(rank: 1, friend: topFriends[0]),
                         ),
-                      if (controller.topFriends.length > 2)
+                      if (topFriends.length > 2)
                         Positioned(
                           right: 50,
                           top: 50,
-                          child: FriendsRanking(rank: 3, friend: controller.topFriends[2]),
+                          child: FriendsRanking(rank: 3, friend: topFriends[2]),
                         ),
                     ],
                   ),
@@ -89,14 +119,14 @@ class _FriendsScreenState extends State<FriendsScreen> {
                 ),
                 const SizedBox(height: 10),
                 Expanded(
-                  child: controller.filteredFriends.isEmpty
-                      ? Center(child: Text(AppLocalizations.of(context)!.noFriends))
+                  child: filteredFriends.isEmpty
+                      ? Center(child: Text(AppLocalizations.of(context)!.noFriends, style: TextStyle(color: Colors.white)))
                       : ListView.builder(
-                    itemCount: controller.filteredFriends.length,
+                    itemCount: filteredFriends.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 12),
-                        child: UserCard(friend: controller.filteredFriends[index]),
+                        child: UserCard(friend: filteredFriends[index]),
                       );
                     },
                   ),
