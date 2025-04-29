@@ -25,7 +25,7 @@ class FavouritesList extends StatelessWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 15,
-            childAspectRatio: 5,
+            childAspectRatio: 4,
             crossAxisCount: 1,
           ),
           itemCount: list.length,
@@ -53,7 +53,7 @@ class FavouritesList extends StatelessWidget {
                     child: Text(
                       list[index].name,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ),
                   SizedBox(
@@ -61,7 +61,7 @@ class FavouritesList extends StatelessWidget {
                     child: Text(
                       list[index].artistName,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 15, fontStyle: FontStyle.italic, color: Colors.white),
+                      style: const TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.white),
                     ),
                   ),
                   SizedBox(
@@ -69,7 +69,7 @@ class FavouritesList extends StatelessWidget {
                     child: Text(
                       list[index].albumName,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                      style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
                   ),
                   SizedBox(
@@ -77,7 +77,7 @@ class FavouritesList extends StatelessWidget {
                     child: Text(
                       list[index].releaseDate,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                      style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
                   ),
                 ],
