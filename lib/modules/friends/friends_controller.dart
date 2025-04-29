@@ -40,7 +40,8 @@ class FriendsController extends GetxController {
     } catch (e) {
       print("Error al agregar el amigo: $e");
     }
-    
+  }
+
   Future<void> showQRInputDialog(BuildContext context) async {
     TextEditingController qrController = TextEditingController();
     return showDialog<void>(

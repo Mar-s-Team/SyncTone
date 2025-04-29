@@ -120,12 +120,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                 const SizedBox(height: 10),
                 Expanded(
                   child: filteredFriends.isEmpty
-                      ? Center(
-                    child: Text(
-                      AppLocalizations.of(context)!.noFriends,
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                  )
+                      ? Center(child: Text(AppLocalizations.of(context)!.noFriends, style: TextStyle(color: Colors.white)))
                       : ListView.builder(
                     itemCount: filteredFriends.length,
                     itemBuilder: (context, index) {
@@ -169,32 +164,6 @@ class _FriendsScreenState extends State<FriendsScreen> {
             );
           }),
         ],
-              const SizedBox(height: 10),
-              Expanded(
-                child: filteredFriends.isEmpty
-                    ? const Center(child: Text("No friends found"))
-                    : ListView.builder(
-                  itemCount: filteredFriends.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: UserCard(friend: filteredFriends[index]),
-                    );
-                  },
-                ),
-              ),
-        /*
-        child: ElevatedButton(
-          onPressed: () async {
-            // Usamos el controlador para mostrar el diálogo
-            await friendsController.showQRInputDialog(context);
-          },
-          child: const Text("Introducir código QR"),
-
-        ),
-        */
-            ]
-        ),
       ),
     );
   }
