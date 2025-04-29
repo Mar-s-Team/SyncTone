@@ -28,6 +28,10 @@
     "homeTrendingSpanish": "Trending in Spanish",
 
     "locationsTitle": "My SyncLocations",
+    "locationCancel" : "Cancel",
+    "locationPlay" : "Play",
+    "locationReproduce" : "Do you want to play this song?",
+    "locationOutOfRange" : "You are out of the marker range",
 
     "playerTitle": "Currently playing",
     "playerUpNext": "Up Next",

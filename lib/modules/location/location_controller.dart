@@ -4,11 +4,16 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
+import 'package:synctone/api/api_service.dart';
+import 'package:synctone/controllers/bottom_navigator_controller.dart';
+import 'package:synctone/modules/main/main_controller.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/song_map.dart';
 
 class LocationController extends GetxController {
   late MapController mapController;
+  late MainController controller;
+  late BottomNavigatorController navC;
   SupabaseClient client = Supabase.instance.client;
   final initialPosition = const LatLng(40.4168, -3.7038);
   final double initialZoom = 14.0;
@@ -41,7 +46,7 @@ class LocationController extends GetxController {
           height: 80,
           builder: (ctx) => GestureDetector(
             onTap: () {
-              _handleMarkerTap(ctx, LatLng(markerModel.latitude, markerModel.longitude));
+              _handleMarkerTap(ctx, LatLng(markerModel.latitude, markerModel.longitude), markerModel.id, markerModel.title);
             },
             child: const Icon(
               Icons.location_on,
@@ -92,7 +97,7 @@ class LocationController extends GetxController {
     Geolocator.openLocationSettings();
   }
   // Función para manejar el evento onTap del marcador
-  void _handleMarkerTap(BuildContext context, LatLng markerPosition) {
+  void _handleMarkerTap(BuildContext context, LatLng markerPosition, String id, String title) {
     // Calcular la distancia entre la ubicación del usuario y el marcador
     double distance = Geolocator.distanceBetween(
       realTimePosition.value.latitude,
@@ -103,13 +108,71 @@ class LocationController extends GetxController {
     print(distance);
     // Si la distancia es menor o igual al radio de acción, activamos el evento onTap
     if (distance <= markerRadius) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('¡Ubicación clicada dentro del radio!')),
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            contentPadding: const EdgeInsets.all(20), // Añadir padding para más espacio en el contenido
+            title: Center(
+              child: Text(
+                '🎶 $title 🎶',
+                textAlign: TextAlign.center,
+              ),
+            ),
+            content: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                AppLocalizations.of(context)!.locationReproduce,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            actionsAlignment: MainAxisAlignment.center,
+            actions: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () async {
+                      final track = await ApiService.getTrackById(id);
+                      if (track != null) {
+                        controller.currentSong.value = track;
+                        navC.setIndex(2);
+                      }
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(Icons.play_arrow, color: Colors.white),
+                    label: Text(
+                      AppLocalizations.of(context)!.locationPlay,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  ),
+                  const SizedBox(width: 8),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.black),
+                      backgroundColor: Colors.black,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      AppLocalizations.of(context)!.locationCancel,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
       );
+      //controller.currentSong.value = ApiService.getTrackById(id) as Track;
+      //navC.setIndex(2);
     } else {
       // Si no está dentro del radio lo indica
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Estás fuera del radio del marcador')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.locationOutOfRange)),
       );
     }
   }

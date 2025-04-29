@@ -28,6 +28,10 @@
     "homeTrendingSpanish": "Populares en español",
 
     "locationsTitle": "Mis SyncLocations",
+    "locationCancel" : "Cancelar",
+    "locationPlay" : "Reproducir",
+    "locationReproduce" : "¿Quieres reproducir la canción?",
+    "locationOutOfRange" : "Estás fuera del rango del marcador",
 
     "playerTitle": "Escuchando ahora",
     "playerUpNext": "A continuación",
