@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
+import 'package:synctone/modules/qr_scanner/qr_scanner_binding.dart';
+import 'package:synctone/modules/qr_scanner/qr_scanner_screen.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'settings_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,7 +13,7 @@ class SettingsScreen extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     final authC = Get.find<AuthController>();
-    controller.generateQR();
+    //controller.generateQR();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -28,22 +30,27 @@ class SettingsScreen extends GetView<SettingsController> {
               Center(
                 child: Column(
                   children: [
-                    Stack(
-                      children: [
-                        const CircleAvatar(
-                          radius: 45,
-                          backgroundImage: AssetImage('assets/avatar_placeholder.png'),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: CircleAvatar(
-                            radius: 14,
-                            backgroundColor: Colors.purple,
-                            child: const Icon(Icons.edit, size: 16, color: Colors.white),
+                    GestureDetector(
+                      onTap: controller.pickImage, // Método para seleccionar la imagen
+                      child: Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 45,
+                            backgroundImage: authC.loggedUser?.userImage != null
+                                ? NetworkImage(authC.loggedUser?.userImage ?? '')
+                                : const AssetImage('assets/avatar_placeholder.png') as ImageProvider,
                           ),
-                        ),
-                      ],
+                          const Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: CircleAvatar(
+                              radius: 14,
+                              backgroundColor: Colors.purple,
+                              child: Icon(Icons.edit, size: 16, color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Text(
@@ -108,8 +115,62 @@ class SettingsScreen extends GetView<SettingsController> {
             trailingText: AppLocalizations.of(context)!.settingsProfileSettingsMini,
             onTap: () => Get.offAllNamed(Routes.PROFILEEDITOR),
           ),
-          _settingItem(Icons.qr_code, AppLocalizations.of(context)!.settingsMyQRCode, onTap: () {}),
+          _settingItem(
+            Icons.qr_code,
+            AppLocalizations.of(context)!.settingsMyQRCode,
+            onTap: () async {
+              await controller.generateQR();
+              Get.dialog(
+                AlertDialog(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  title: Text(AppLocalizations.of(context)!.settingsMyQRCode,  textAlign: TextAlign.center, style: const TextStyle(color: Colors.black)),
+                  content: Obx(
+                    () => SizedBox(
+                      width: 250,
+                      height: 250,
+                      child: controller.qrCodeWidget.value,
+                    ),
+                  ),
+                  actions: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        OutlinedButton(
+                          onPressed: () => Get.back(),
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            side: const BorderSide(color: Colors.white),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child:
+                            Text(AppLocalizations.of(context)!.settingsMyQRCodeClose,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+          /*
           _settingItem(Icons.lock, AppLocalizations.of(context)!.settingsChangePassword, onTap: () {}),
+              final scannedCode = await Get.to(() => const QRScannerScreen(), binding: QRScannerBinding());
+              if (scannedCode != null) {
+                debugPrint('Código escaneado: $scannedCode');
+              }
+            },
+          ),
+*/
+          _settingItem(
+            Icons.lock,
+            AppLocalizations.of(context)!.settingsChangePassword,
+            onTap: () => Get.toNamed(Routes.CHANGEPASSWORD),
+          ),
           const Divider(color: Colors.white24, height: 32),
           _settingItem(
             Icons.logout,
@@ -121,7 +182,6 @@ class SettingsScreen extends GetView<SettingsController> {
       ),
     );
   }
-
   Widget _languageSelector(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -145,17 +205,23 @@ class SettingsScreen extends GetView<SettingsController> {
                 ),
               ),
               items: [
-                DropdownMenuItem(value: 'en', child: Text(AppLocalizations.of(context)!.settingsLanguageEng)),
                 DropdownMenuItem(value: 'es', child: Text(AppLocalizations.of(context)!.settingsLanguageEsp)),
+                DropdownMenuItem(value: 'en', child: Text(AppLocalizations.of(context)!.settingsLanguageEng)),
                 DropdownMenuItem(value: 'ca', child: Text(AppLocalizations.of(context)!.settingsLanguageCat)),
               ],
-              onChanged: (val) => Get.updateLocale(Locale(val!)),
+              onChanged: (val) {
+                if (val != null) {
+                  Get.updateLocale(Locale(val));
+                }
+              },
             ),
           ),
         ],
       ),
     );
   }
+
+
 
   Widget _quickAction(IconData icon, String label, VoidCallback onPressed) {
     return Column(

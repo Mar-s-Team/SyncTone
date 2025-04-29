@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:synctone/controllers/auth_controller.dart';
 import 'package:synctone/controllers/bottom_navigator_controller.dart';
 
+import '../player/player_controller.dart';
+
 class MainScreen extends StatelessWidget{
    MainScreen({super.key});
-
-  final BottomNavigatorController controller = Get.put(BottomNavigatorController());
-  final AuthController authC = Get.find<AuthController>();
+   //final PlayerController playerController = Get.put(PlayerController(null));
+   final BottomNavigatorController controller = Get.put(BottomNavigatorController());
+   final AuthController authC = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class MainScreen extends StatelessWidget{
             ),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: controller.index.value,
-              onTap: (index) => controller.setIndex(index),
+              onTap: (index) => Get.find<BottomNavigatorController>().setIndex(index),
               type: BottomNavigationBarType.fixed,
               backgroundColor: const Color(0xFF2B2B2B),
               showSelectedLabels: false,

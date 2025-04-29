@@ -16,7 +16,7 @@
     "registerTitle": "Registra't",
     "registerSignUpButton": "Crear compte",
     "registerOtherLabel" : "O registra't amb",
-    "registerButtonRedirect": "Redireccionant",
+    "registerButtonRedirect": "Redirigint",
     "registerGoogleButton": "Continua amb Google",
     "registerAccount": "Ja tens compte?",
     "registerSignIn": "Inicia sessió aqui",
@@ -25,14 +25,21 @@
     "homeTitle": "SyncTone",
     "homeSearchLabel": "Cercar",
     "homeNewReleases": "Noves estrenes",
+    "homeTrendingSpanish": "Populars en espanyol",
 
     "locationsTitle": "Les meves SyncLocations",
 
     "playerTitle": "Escoltant ara",
+    "playerUpNext": "A continuació",
 
     "statsTitle": "Les meves SyncStats",
 
-    "friendsTitle": "Els meus SyncFriends",
+    "friendsTitle": "Els meus SyncAmics",
+    "topFriends": "Millors SyncAmics",
+    "myFriends": "Els meus SyncAmics",
+    "noFriends": "Amics no trobats",
+    "cancelScanning": "Cancel·lar",
+
 
     "playlistsTitle": "Les meves SyncPlaylists",
 
@@ -41,6 +48,7 @@
     "settingsDarkMode": "Mode fosc",
     "settingsProfileSettings": "Configuració del perfil",
     "settingsMyQRCode": "El meu codi QR",
+    "settingsMyQRCodeClose": "Tancar",
     "settingsChangePassword": "Canviar contrasenya",
     "settingsNotifications": "Notificacions",
     "settingsContact": "Contacte",
@@ -57,6 +65,11 @@
     "profileEditorName": "El teu nom",
     "profileEditorUsername": "Nom d'usuari",
     "profileEditorLastName": "El teu cognom",
-    "profileEditorSave": "Desa els canvis"
+    "profileEditorSave": "Desa els canvis",
+
+    "changePasswordTitle": "Canviar contrasenya",
+    "newPasswordLabel": "Nova contrasenya",
+    "confirmNewPasswordLabel": "Confirma la nova contrasenya",
+    "changePasswordButton": "Canviar contrasenya"
 
 }

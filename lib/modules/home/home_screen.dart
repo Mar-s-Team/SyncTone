@@ -11,6 +11,9 @@ class HomeScreen extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
   final MySearchController searchController = Get.put(MySearchController());
 
+   HomeScreen({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +56,23 @@ class HomeScreen extends StatelessWidget {
                     : SizedBox(
                       height:   200,
                       child: SongListView(songs: controller.newReleases)
+                  ))
+              ),
+              Text(
+                AppLocalizations.of(context)!.homeTrendingSpanish,
+                style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Obx(
+                  (() => controller.isLoading.value
+                      ? const CircularProgressIndicator()
+                      : SizedBox(
+                      height:   200,
+                      child: SongListView(
+                          songs: controller.trendingSpanish,
+                      )
                   ))
               )
             ],

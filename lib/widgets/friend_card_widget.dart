@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:synctone/models/user_model.dart';
 import 'package:synctone/routes/app_pages.dart';
 
+import '../controllers/auth_controller.dart';
+
 class UserCard extends StatelessWidget {
   const UserCard({
     required this.friend,
@@ -12,6 +14,7 @@ class UserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authC = Get.find<AuthController>();
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(bottom: 12),
@@ -29,8 +32,10 @@ class UserCard extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            radius: 20,
-            backgroundImage: NetworkImage(friend.userImage),
+            radius: 30,
+            backgroundImage: friend.userImage != null && friend.userImage != ''
+                ? NetworkImage(friend.userImage ?? '')
+                : const AssetImage('assets/avatar_placeholder.png') as ImageProvider,
           ),
           const SizedBox(width: 12),
           Column(
@@ -47,6 +52,7 @@ class UserCard extends StatelessWidget {
             ],
           ),
           const Spacer(),
+          /*
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF4B39EF),
@@ -56,7 +62,7 @@ class UserCard extends StatelessWidget {
             ),
             onPressed: () {},
             child: const Text('View', style: TextStyle(color: Colors.white)),
-          ),
+           */
         ],
       ),
     );

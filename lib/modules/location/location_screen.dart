@@ -1,68 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
+import 'package:latlong2/latlong.dart';
+import '../../widgets/settings_menu_widget.dart';
+import 'location_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class LocationScreen extends StatefulWidget {
-  const LocationScreen({super.key});
-
-  @override
-  State<LocationScreen> createState() => _LocationScreenState();
-}
-
-class _LocationScreenState extends State<LocationScreen> {
-  late GoogleMapController _mapController;
-
-  final CameraPosition _initialPosition = const CameraPosition(
-    target: LatLng(41.3784, 2.1925), // Coordenadas de Barcelona
-    zoom: 12,
-  );
-
-  // Lista de marcadores predefinidos
-  final Set<Marker> markers = {
-    const Marker(
-      markerId: MarkerId('song1'),
-      position: LatLng(41.3784, 2.1925), // Marcador en el centro de Barcelona
-      infoWindow: InfoWindow(
-        title: 'Canción 1',
-        snippet: 'Descripción de la Canción 1',
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-    ),
-    const Marker(
-      markerId: MarkerId('song2'),
-      position: LatLng(41.3800, 2.1935), // Otra ubicación cerca de Barcelona
-      infoWindow: InfoWindow(
-        title: 'Canción 2',
-        snippet: 'Descripción de la Canción 2',
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-      //icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-    ),
-    const Marker(
-      markerId: MarkerId('song3'),
-      position: LatLng(41.3760, 2.1885), // Otra ubicación en Barcelona
-      infoWindow: InfoWindow(
-        title: 'Canción 3',
-        snippet: 'Descripción de la Canción 3',
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-      //icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-    ),
-  };
+class LocationScreen extends StatelessWidget {
+  final LocationController controller = Get.put(LocationController());
+  LocationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.locationsTitle),
+        leading: const SettingsMenuWidget(),
       ),
-      body: GoogleMap(
-        initialCameraPosition: _initialPosition, // Configura la cámara inicial
-        onMapCreated: (controller) {
-          _mapController = controller;
-        },
-        mapType: MapType.normal,
-        markers: markers,
+      body: FlutterMap(
+        mapController: controller.mapController,
+        options: MapOptions(
+          center: controller.initialPosition,
+          zoom: controller.initialZoom,
+          minZoom: 1,
+          maxZoom: 19,
+          interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+        ),
+        children: [
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.marsteam.synctone',
+            minZoom: 1,
+            maxZoom: 19,
+          ),
+          Obx(() => MarkerLayer(
+            markers: [
+              Marker(
+                point: controller.realTimePosition.value,
+                width: 50,
+                height: 50,
+                builder: (ctx) => const Icon(
+                  Icons.my_location,
+                  color: Colors.blue,
+                  size: 40,
+                ),
+              ),
+              ...controller.markers,
+            ],
+          )),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.my_location, color: Colors.black),
+                  onPressed: () => controller.moveCamera(controller.realTimePosition(), 18.0),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

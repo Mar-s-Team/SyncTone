@@ -5,7 +5,7 @@ class UserModel {
   final String username;
   final DateTime? createdAt;
   final String? spotifyAccount;
-  final String userImage;
+  late  String? userImage;
 
   UserModel({
     required this.idUser,
@@ -13,7 +13,7 @@ class UserModel {
     this.lastName,
     required this.username,
     this.createdAt,
-    required this.userImage,
+    this.userImage,
     this.spotifyAccount,
   });
 
@@ -28,7 +28,18 @@ class UserModel {
       userImage: json['user_image'] as String? ?? '',
     );
   }
-  
+  factory UserModel.fromJson2(dynamic json) {
+    return UserModel(
+      idUser: json['id_user'] as String,
+      firstName: json['first_name'] as String? ?? '',
+      lastName: json['last_name'] as String? ?? '',
+      username: json['username'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      spotifyAccount: json['spotify_account'] as String? ?? '',
+      userImage: json['user_image'] as String? ?? '',
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'id_user': idUser,
