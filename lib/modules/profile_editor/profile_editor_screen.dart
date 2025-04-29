@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:synctone/controllers/bottom_navigator_controller.dart';
 import 'package:synctone/routes/app_pages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../controllers/auth_controller.dart';

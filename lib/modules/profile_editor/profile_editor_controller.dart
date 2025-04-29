@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:synctone/controllers/bottom_navigator_controller.dart';
+import 'package:synctone/routes/app_pages.dart';
 
 class ProfileEditorController extends GetxController {
+  BottomNavigatorController navC = Get.find<BottomNavigatorController>();
   final nameController            = TextEditingController();
   final lastNameController        = TextEditingController();
   final usernameController        = TextEditingController();
@@ -76,14 +79,5 @@ class ProfileEditorController extends GetxController {
     } catch (error) {
       print('Error al cargar géneros: $error');
     }
-  }
-
-  @override
-  void onClose() {
-    //nameController.dispose();
-    //lastNameController.dispose();
-    //usernameController.dispose();
-    //spotifyUsernameController.dispose();
-    super.onClose();
   }
 }
