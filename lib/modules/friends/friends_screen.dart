@@ -75,7 +75,12 @@ class _FriendsScreenState extends State<FriendsScreen> {
                 SizedBox(
                   height: 190,
                   child: topFriends.isEmpty
-                      ? const Center(child: CircularProgressIndicator())
+                      ? const Center(
+                    child: Text(
+                      "No friends yet",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
                       : Stack(
                     alignment: Alignment.topCenter,
                     children: [
@@ -115,7 +120,12 @@ class _FriendsScreenState extends State<FriendsScreen> {
                 const SizedBox(height: 10),
                 Expanded(
                   child: filteredFriends.isEmpty
-                      ? Center(child: Text(AppLocalizations.of(context)!.noFriends))
+                      ? Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.noFriends,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  )
                       : ListView.builder(
                     itemCount: filteredFriends.length,
                     itemBuilder: (context, index) {

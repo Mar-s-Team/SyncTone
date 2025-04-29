@@ -10,6 +10,19 @@ import '../../api/api_service.dart';
 
 class MainController extends GetxController {
   final BottomNavigatorController bottomNavController =  Get.put(BottomNavigatorController());
+  Rx<Track> currentSong = Track(
+      id: "1532771",
+      name: "Let Me Hear You I",
+      duration: 54,
+      artistId: '461414',
+      artistName: 'Paul Werner',
+      albumName: 'Let Me Hear You I',
+      albumId: '404140',
+      releaseDate: '2018-03-15',
+      albumImage: 'https:\/\/usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771',
+      audioUrl: 'https:\/\/prod-1.storage.jamendo.com\/?trackid=1532771&format=mp31&from=K4wtiuZwKN3fwiRtuJ4JIw%3D%3D%7CLiDIe8pfkkxttLl33pWCRg%3D%3D',
+      image: 'https:\/\/usercontent.jamendo.com?type=album&id=404140&width=300&trackid=1532771')
+      .obs;
 
   void setIndex(i) {bottomNavController.index.value = i;  }
 
@@ -45,5 +58,6 @@ class MainController extends GetxController {
     trendingSpanish(trendingSpanishData);
     trendingSpanish.refresh();
   }
+
 
 }

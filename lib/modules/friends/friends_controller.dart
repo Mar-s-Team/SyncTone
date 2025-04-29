@@ -11,7 +11,6 @@ class FriendsController extends GetxController {
   UserModel? loggedUser;
   RxBool isScanning = false.obs;
 
-
   void startScanning() {
     isScanning.value = true;
   }
