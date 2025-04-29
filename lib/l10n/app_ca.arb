@@ -28,6 +28,10 @@
     "homeTrendingSpanish": "Populars en espanyol",
 
     "locationsTitle": "Les meves SyncLocations",
+    "locationCancel" : "Cancel·lar",
+    "locationPlay" : "Reproduir",
+    "locationReproduce" : "Vols reproduir aquesta cançó?",
+    "locationOutOfRange" : "Estàs fora del rang del marcador",
 
     "playerTitle": "Escoltant ara",
     "playerUpNext": "A continuació",
@@ -38,6 +42,7 @@
     "topFriends": "Millors SyncAmics",
     "myFriends": "Els meus SyncAmics",
     "noFriends": "Amics no trobats",
+    "noTopFriends": "Encara no tens amics",
     "cancelScanning": "Cancel·lar",
 
 

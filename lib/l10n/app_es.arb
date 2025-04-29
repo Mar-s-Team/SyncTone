@@ -28,6 +28,10 @@
     "homeTrendingSpanish": "Populares en español",
 
     "locationsTitle": "Mis SyncLocations",
+    "locationCancel" : "Cancelar",
+    "locationPlay" : "Reproducir",
+    "locationReproduce" : "¿Quieres reproducir la canción?",
+    "locationOutOfRange" : "Estás fuera del rango del marcador",
 
     "playerTitle": "Escuchando ahora",
     "playerUpNext": "A continuación",
@@ -38,6 +42,7 @@
     "topFriends": "Mejores SyncAmigos",
     "myFriends": "Mis SyncAmigos",
     "noFriends": "Amigos no encontrados",
+    "noTopFriends": "Todavía no tienes amigos",
     "cancelScanning": "Cancelar",
 
     "favouritesTitle": "Mis SyncFavoritas",

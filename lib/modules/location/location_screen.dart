@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:synctone/controllers/bottom_navigator_controller.dart';
+import 'package:synctone/modules/main/main_controller.dart';
 import '../../widgets/settings_menu_widget.dart';
 import 'location_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -12,6 +14,8 @@ class LocationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.navC = Get.find<BottomNavigatorController>();
+    controller.controller = Get.find<MainController>();
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.locationsTitle),
