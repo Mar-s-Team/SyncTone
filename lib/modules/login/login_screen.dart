@@ -149,7 +149,32 @@ class LoginScreen extends GetView<LoginController> {
                               ),
                               const SizedBox(height: 20),
                               ElevatedButton.icon(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      backgroundColor: const Color(0xFF1C1C1C),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                                      title: const Text(
+                                        "Google",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+
+                                      content: Text(
+                                        AppLocalizations.of(context)!.comingSoonMessage,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(color: Colors.white),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.of(context).pop(),
+                                          child: const Text('Cerrar', style: TextStyle(color: Colors.purple)),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
                                 icon: Image.asset('assets/logo_google.jpg', height: 24),
                                 label: Text(AppLocalizations.of(context)!.loginGoogleButton),
                                 style: ElevatedButton.styleFrom(

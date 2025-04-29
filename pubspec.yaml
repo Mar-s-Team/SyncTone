@@ -51,6 +51,7 @@ flutter:
   assets:
     - assets/logo_google.jpg
     - assets/logo_synctone.png
+    - assets/avatar_placeholder.jpg
     - assets/.env
   uses-material-design: true
   generate: true

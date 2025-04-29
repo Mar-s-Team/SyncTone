@@ -23,7 +23,7 @@ class EditProfileScreen extends GetView<ProfileEditorController> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Get.toNamed(Routes.SETTINGS),
-            /*onPressed: (){final authC = Get.find<AuthController>();
+          /*onPressed: (){final authC = Get.find<AuthController>();
           authC.loadUser();
         Get.offNamed((Routes.SETTINGS));*/
 
@@ -37,7 +37,6 @@ class EditProfileScreen extends GetView<ProfileEditorController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildSpotifyBox(),
               const SizedBox(height: 24),
               Text(t.profileEditorInfo, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
               const SizedBox(height: 12),
@@ -100,50 +99,4 @@ class EditProfileScreen extends GetView<ProfileEditorController> {
     );
   }
 
-  Widget _buildSpotifyBox() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF2E2E2E),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: const [
-              Icon(Icons.music_note, size: 36, color: Colors.purple),
-              SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Link your Spotify account", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                    SizedBox(height: 4),
-                    Text("Get more accurate recommendations and statistics using your Spotify data",
-                        style: TextStyle(color: Colors.white70, fontSize: 12)),
-                  ],
-                ),
-              )
-            ],
-          ),
-          const SizedBox(height: 12),
-          /*TextField(
-            controller: controller.spotifyUsernameController,
-            style: const TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              hintText: "Your Spotify username here...",
-              hintStyle: const TextStyle(color: Colors.white54),
-              filled: true,
-              fillColor: Colors.purple.shade100.withOpacity(0.2),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide.none,
-              ),
-            ),
-          ),*/
-        ],
-      ),
-    );
-  }
 }

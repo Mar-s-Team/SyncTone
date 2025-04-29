@@ -41,7 +41,7 @@
     "noTopFriends": "Todavía no tienes amigos",
     "cancelScanning": "Cancelar",
 
-    "playlistsTitle": "Mis SyncPlaylists",
+    "favouritesTitle": "Mis SyncFavoritas",
 
     "settingsTitle": "Configuración",
     "settingsLanguage": "Idioma",
@@ -71,5 +71,16 @@
     "changePasswordTitle": "Cambiar contraseña",
     "newPasswordLabel": "Nueva contraseña",
     "confirmNewPasswordLabel": "Confirmar nueva contraseña",
-    "changePasswordButton": "Cambiar contraseña"
+    "changePasswordButton": "Cambiar contraseña",
+
+    "settingsContactDialog": "Si tienes alguna duda, pregunta o simplemente necesitas ayuda, no dudes en ponerte en contacto con nosotros. Nuestro equipo de soporte estará encantado de ayudarte lo antes posible.\n\nPuedes escribirnos directamente a: help@synctone.com\n\n¡Gracias por confiar en SyncTone!",
+    "comingSoonMessage": "Disponible en la siguiente versión",
+    "changePasswordErrorMismatch": "Las contraseñas no coinciden",
+    "changePasswordErrorEmpty": "La nueva contraseña no puede estar vacía",
+    "changePasswordSuccessTitle": "Éxito",
+    "changePasswordSuccessMessage": "Contraseña cambiada correctamente",
+    "changePasswordErrorTitle": "Error",
+    "changePasswordDialogOk": "Aceptar"
+
+
 }
