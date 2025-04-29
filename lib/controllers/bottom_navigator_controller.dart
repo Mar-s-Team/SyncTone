@@ -7,17 +7,15 @@ import 'package:synctone/modules/location/location_controller.dart';
 import 'package:synctone/modules/location/location_screen.dart';
 import 'package:synctone/modules/player/player_controller.dart';
 import 'package:synctone/modules/player/player_screen.dart';
-import 'package:synctone/modules/playlists/playlists_screen.dart';
-import 'package:synctone/modules/stats/stats_screen.dart';
+import 'package:synctone/modules/favourites/favourites_screen.dart';
 
 class BottomNavigatorController extends GetxController {
   var screens = [
     HomeScreen(),
     LocationScreen(),
     PlayerScreen(),
-    const StatsScreen(),
     const FriendsScreen(),
-    const PlaylistsScreen(),
+    const FavouritesScreen(),
   ];
   var index = 0.obs;
 

@@ -21,7 +21,7 @@ class SettingsMenuWidget extends StatelessWidget {
           radius: 20,
           backgroundImage: settingsController.userImage.isNotEmpty
               ? NetworkImage(settingsController.userImage.value)
-              : const AssetImage('assets/avatar_placeholder.png') as ImageProvider,
+              : const NetworkImage('https://cdn-icons-png.freepik.com/512/8211/8211048.png')
         )),
       )
     );

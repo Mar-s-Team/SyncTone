@@ -41,7 +41,7 @@
     "cancelScanning": "Cancel·lar",
 
 
-    "playlistsTitle": "Les meves SyncPlaylists",
+    "favouritesTitle": "Les meves SyncsPreferides",
 
     "settingsTitle": "Configuració",
     "settingsLanguage": "Idioma",
@@ -70,6 +70,16 @@
     "changePasswordTitle": "Canviar contrasenya",
     "newPasswordLabel": "Nova contrasenya",
     "confirmNewPasswordLabel": "Confirma la nova contrasenya",
-    "changePasswordButton": "Canviar contrasenya"
+    "changePasswordButton": "Canviar contrasenya",
+
+    "settingsContactDialog": "Si tens qualsevol dubte, pregunta o simplement necessites ajuda, no dubtis a posar-te en contacte amb nosaltres. El nostre equip d'assistència estarà encantat d'ajudar-te al més aviat possible.\n\nPots escriure'ns directament a: help@synctone.com\n\nGràcies per confiar en SyncTone!",
+    "comingSoonMessage": "Disponible en la següent versió",
+
+    "changePasswordErrorMismatch": "Les contrasenyes no coincideixen",
+    "changePasswordErrorEmpty": "La nova contrasenya no pot estar buida",
+    "changePasswordSuccessTitle": "Èxit",
+    "changePasswordSuccessMessage": "Contrasenya canviada correctament",
+    "changePasswordErrorTitle": "Error",
+    "changePasswordDialogOk": "D'acord"
 
 }

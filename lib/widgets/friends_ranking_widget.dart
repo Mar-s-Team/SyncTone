@@ -23,7 +23,7 @@ class FriendsRanking extends StatelessWidget {
             radius: rank == 1 ? 50 : rank == 2 ? 40 : 40,
             backgroundImage: friend.userImage != null && friend.userImage != ''
                 ? NetworkImage(friend.userImage ?? '')
-                : const AssetImage('assets/avatar_placeholder.png') as ImageProvider,
+                : const NetworkImage('https://cdn-icons-png.freepik.com/512/8211/8211048.png')
           ),
           const SizedBox(height: 4),
           Text(friend.username, style: const TextStyle(color: Colors.white)),

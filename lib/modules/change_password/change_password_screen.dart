@@ -87,13 +87,14 @@ class ChangePasswordScreen extends GetView<ChangePasswordController> {
               Obx(() => ElevatedButton(
                 onPressed: () {
                   if (controller.isLoading.isFalse) {
-                    controller.changePassword();
+                    controller.changePassword(authStrings);
                   }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 80),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 14, horizontal: 80),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),

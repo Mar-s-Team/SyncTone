@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:synctone/models/user_model.dart';
-import 'package:synctone/routes/app_pages.dart';
 
 import '../controllers/auth_controller.dart';
 
@@ -35,7 +34,7 @@ class UserCard extends StatelessWidget {
             radius: 30,
             backgroundImage: friend.userImage != null && friend.userImage != ''
                 ? NetworkImage(friend.userImage ?? '')
-                : const AssetImage('assets/avatar_placeholder.png') as ImageProvider,
+                : const NetworkImage('https://cdn-icons-png.freepik.com/512/8211/8211048.png')
           ),
           const SizedBox(width: 12),
           Column(
