@@ -49,19 +49,35 @@ class FavouritesList extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: 270,
+                    width: 190,
                     child: Text(
                       list[index].name,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ),
                   SizedBox(
-                    width: 270,
+                    width: 190,
                     child: Text(
                       list[index].artistName,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 16, fontStyle: FontStyle.italic, color: Colors.white),
+                      style: const TextStyle(fontSize: 15, fontStyle: FontStyle.italic, color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 190,
+                    child: Text(
+                      list[index].albumName,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 190,
+                    child: Text(
+                      list[index].releaseDate,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),
                 ],
